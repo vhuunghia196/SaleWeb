@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+@section head {
+    <link href="~/Publics/css/main.css" rel="stylesheet" />
+    <link href="~/Publics/css/DECOR.css" rel="stylesheet" />
+    <link href="~/Publics/css/responsive.css" rel="stylesheet" />
+    <link href="~/Publics/css/SHOP.css" rel="stylesheet" />
+    <script src="~/Publics/js/jquery-3.6.0.min.js"></script>
+    <script src="~/Publics/js/javascript.js"></script>
+    <link href="~/Publics/css/all.min.css" rel="stylesheet" />
+
+}
+<div class="container">
+    <div class="title-bar">
+        <div class="title-bar-left">
+            <h2>Shop</h2>
+        </div>
+        <div class="title-bar-right">
+            <span>
+                <a href="../HTML/index.html" style="font-weight: 200;">Home</a>
+            </span>
+            <span> > </span>
+            <span style=" font-weight: bolder; margin-right: 10px; color: #6d6b6b  "> decor </span>
+        </div>
+    </div>
+    <div class="decor">
+        <div class="decor-all">
+            <div class="product-right">
+                <div class="product-right-wrapper">
+                    <div class="product-right-wrapper-top">
+                        <h3>Categories</h3>
+                        <div class="product-right-wrapper-top-inner">
+                            <div class="product-right-wrapper-top-inner-all">
+                                <div class="product-right-wrapper-top-inner-all-1">
+                                    <a href="#">CHAIR</a>
+                                </div>
+                                <div class="product-right-wrapper-top-inner-all-2">
+                                    <span>1</span>
+                                </div>
+                            </div>
+                            <div class="product-right-wrapper-top-inner-all">
+                                <div class="product-right-wrapper-top-inner-all-1">
+                                    <a href="#">DECOR</a>
+                                </div>
+                                <div class="product-right-wrapper-top-inner-all-2">
+                                    <span>3</span>
+                                </div>
+                            </div>
+                            <div class="product-right-wrapper-top-inner-all">
+                                <div class="product-right-wrapper-top-inner-all-1">
+                                    <a href="#">LIGHT</a>
+                                </div>
+                                <div class="product-right-wrapper-top-inner-all-2">
+                                    <span>2</span>
+                                </div>
+                            </div>
+                            <div class="product-right-wrapper-top-inner-all">
+                                <div class="product-right-wrapper-top-inner-all-1">
+                                    <a href="#">PLANT</a>
+                                </div>
+                                <div class="product-right-wrapper-top-inner-all-2">
+                                    <span>3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-right-wrapper-bottom">
+                        <h4>Filter by price</h4>
+                        <div class="product-right-wrapper-bottom-price">
+                            <div class="product-right-wrapper-bottom-price-line">
+                                <span class="product-right-wrapper-bottom-price-line-1">
+                                </span>
+                                <span class="product-right-wrapper-bottom-price-line-2">
+                                </span>
+                            </div>
+                            <div class="product-right-wrapper-bottom-price-last">
+                                <div class="product-right-wrapper-bottom-price-last-1">
+                                    Price:
+                                    <span>
+                                        £0
+                                    </span>
+                                    —
+                                    <span>
+                                        £10
+                                    </span>
+                                </div>
+                                <button type="submit" class="button">
+                                    FILTER
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="decor-all-left">
+                <p>Showing all <strong style="color: #8d8d8d;">3</strong> results</p>
+                <input type="text" placeholder="Search here..." style="float: left;">
+                <input type="button" class="Search" value="Search">
+                <ul style="margin: 0 -15px;">
+                    <li class="decor-all-left-inner">
+                        <a style="display: block" href="../HTML/Bedroom mirror.html">
+                            <img src="~/Publics/image/list-4.jpg" />
+                        </a>
+                        <div style=" margin-top: 20px; margin-bottom: 7.5px;">
+                            <h2>Bedroom mirror</h2>
+                        </div>
+                        <span>$ <bdi>4.00</bdi></span>
+                        <a class="shop">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                    <li class="decor-all-left-inner">
+                        <a style="display: block" href="../HTML/Decorative pillow.html">
+                            <img src="~/Publics/image/list-7.jpg" />
+                        </a>
+                        <div style=" margin-top: 20px; margin-bottom: 7.5px;">
+                            <h2>Decorative pillow</h2>
+                        </div>
+                        <span>$ <bdi>7.00</bdi></span>
+                        <a class="shop">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                    <li class="decor-all-left-inner">
+                        <a style="display: block" href="../HTML/Wooden picture frame.html">
+                            <img src="~/Publics/image/list-3.jpg" />
+                        </a>
+                        <div style=" margin-top: 20px; margin-bottom: 7.5px;">
+                            <h2>Wooden picture frame</h2>
+                        </div>
+                        <span>$ <bdi>3.00</bdi></span>
+                        <a class="shop">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
