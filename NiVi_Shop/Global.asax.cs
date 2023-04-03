@@ -1,9 +1,12 @@
+using NiVi_Shop.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+
 
 namespace NiVi_Shop
 {
@@ -13,6 +16,7 @@ namespace NiVi_Shop
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Database.SetInitializer(new CreateDatabaseIfNotExists<NiViShopDBContext>());
         }
     }
 }
