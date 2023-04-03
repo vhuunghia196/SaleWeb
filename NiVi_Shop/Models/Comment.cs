@@ -17,7 +17,9 @@ namespace NiVi_Shop.Models
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
         public virtual Products Product { get; set; }
-
+        public int UserID { get; set; }
+        [ForeignKey("UserID")]
+        public virtual User User { get; set; }
         public int IDReplyComment { get; set; }
         [ForeignKey("IDReplyComment")]
         public virtual Comment Comments { get; set; }
