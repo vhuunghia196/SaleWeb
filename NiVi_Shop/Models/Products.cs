@@ -11,6 +11,7 @@ namespace NiVi_Shop.Models
     public class Products
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductID { get; set; }
         [Required]
         public string Name { get; set; }

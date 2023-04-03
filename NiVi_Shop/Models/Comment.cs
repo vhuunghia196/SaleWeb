@@ -11,6 +11,7 @@ namespace NiVi_Shop.Models
     public class Comment
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IDComment { get; set; }
         [Required]
         public String Content { get; set; }

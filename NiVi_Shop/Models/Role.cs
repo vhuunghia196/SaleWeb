@@ -11,6 +11,7 @@ namespace NiVi_Shop.Models
     public class Role
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RoleID { get; set; }
         [Required]
         public string RoleName { get; set; }

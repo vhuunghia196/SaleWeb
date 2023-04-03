@@ -11,6 +11,7 @@ namespace NiVi_Shop.Models
     public class Categories
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CategoryID { get; set; }
 
         public string CategoryName { get; set; }

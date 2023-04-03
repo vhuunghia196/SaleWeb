@@ -8,6 +8,7 @@ namespace NiVi_Shop.Controllers
 {
     public class CHAIRController : Controller
     {
+
         // GET: CHAIR
         public ActionResult Index()
         {

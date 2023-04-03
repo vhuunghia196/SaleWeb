@@ -11,6 +11,7 @@ namespace NiVi_Shop.Models
     public class OrderDetail
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DayOfCreate { get; set; }
         public int OrderID { get; set; }
         [ForeignKey("OrderID")]

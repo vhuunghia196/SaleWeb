@@ -11,6 +11,7 @@ namespace NiVi_Shop.Models
     public class Supplier
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SupplierID { get; set; }
         [Required]
         public string Name { get; set; }

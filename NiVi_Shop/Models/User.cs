@@ -11,6 +11,7 @@ namespace NiVi_Shop.Models
     public class User
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserID { get; set; }
         [Required]
         public string Username { get; set; }
