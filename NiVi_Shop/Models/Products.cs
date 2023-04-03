@@ -11,14 +11,20 @@ namespace NiVi_Shop.Models
     public class Products
     {
         [Key]
-        public int Id { get; set; }
+        public int ProductID { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
         public string Image { get; set; }
+        [Required]
         public double Price { get; set; }
         public int? Quantity { get; set; }
         public string Detail { get; set; }
         public int SupplierID { get; set; }
+        [ForeignKey("SupplierID")]
+        public virtual Supplier Supplier { get; set; }
         public int CategoryID { get; set; }
+        [ForeignKey("CategoryID")]
+        public virtual Categories Categories { get; set; }
     }
 }

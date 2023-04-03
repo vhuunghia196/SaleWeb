@@ -11,8 +11,13 @@ namespace NiVi_Shop.Models
     public class OrderDetail
     {
         [Key]
+        public int DayOfCreate { get; set; }
         public int OrderID { get; set; }
+        [ForeignKey("OrderID")]
+        public virtual Orders Order { get; set; }
         public int ProductID { get; set; }
+        [ForeignKey("ProductID")]
+        public virtual Products Product { get; set; }
         public double Price { get; set; }
         public int? Quantity { get; set; }
     }

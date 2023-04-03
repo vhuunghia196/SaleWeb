@@ -12,7 +12,9 @@ namespace NiVi_Shop.Models
     {
         [Key]
         public int OrderID { get; set; }
-        public int CustomerID { get; set; }
+        public int UserID { get; set; }
+        [ForeignKey("UserID")]
+        public virtual User User { get; set; }
         public DateTime OrderDate { get; set; }
     }
 }

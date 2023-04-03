@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
 
 namespace NiVi_Shop.Models
 {
-    [Table("Customers")]
-    public class Customers
+    [Table("Users")]
+    public class User
     {
         [Key]
-        public int CustomerID { get; set; }
+        public int UserID { get; set; }
+        [Required]
+        public string Username { get; set; }
+        [Required]
+        public string Password { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
@@ -20,5 +24,9 @@ namespace NiVi_Shop.Models
         public string Address { get; set; }
         [Required]
         public string Email { get; set; }
+        
+        public int RoleID { get; set; }
+        [ForeignKey("RoleID")]
+        public virtual Role Role { get; set; }
     }
 }
