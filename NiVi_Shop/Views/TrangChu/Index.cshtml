@@ -1,4 +1,13 @@
-﻿
+﻿@model List<NiVi_Shop.Models.Product>
+
+@foreach (var product in Model)
+{
+    <div>
+        <h2>@product.Name</h2>
+        <p>@product.Detail</p>
+        <p>@product.Price</p>
+    </div>
+}
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout1.cshtml";

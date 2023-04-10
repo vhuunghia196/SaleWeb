@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\NiVi_Shop",
-    "\\NiVi_Shop\\Migrations"
+    "\\NiVi_Shop\\Controllers",
+    "\\NiVi_Shop\\Views",
+    "\\NiVi_Shop\\Views\\TrangChu"
   ],
-  "SelectedNode": "\\NiVi_Shop\\Migrations\\Configuration.cs",
+  "SelectedNode": "\\NiVi_Shop\\Views\\TrangChu\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }

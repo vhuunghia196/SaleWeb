@@ -16,7 +16,7 @@ namespace NiVi_Shop
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            Database.SetInitializer(new CreateDatabaseIfNotExists<NiViShopDBContext>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<DBContextNiViShop>());
         }
     }
 }

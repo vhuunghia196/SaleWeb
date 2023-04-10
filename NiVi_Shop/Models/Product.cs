@@ -6,43 +6,41 @@ namespace NiVi_Shop.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class User
+    public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Product()
         {
             Comments = new HashSet<Comment>();
-            Orders = new HashSet<Order>();
+            OrderDetails = new HashSet<OrderDetail>();
         }
 
-        public int UserID { get; set; }
-
-        [Required]
-        public string Username { get; set; }
-
-        [Required]
-        public string Password { get; set; }
+        public int ProductID { get; set; }
 
         [Required]
         public string Name { get; set; }
 
         [Required]
-        public string PhoneNumber { get; set; }
+        public string Image { get; set; }
 
-        [Required]
-        public string Address { get; set; }
+        public double Price { get; set; }
 
-        [Required]
-        public string Email { get; set; }
+        public int? Quantity { get; set; }
 
-        public int RoleID { get; set; }
+        public string Detail { get; set; }
+
+        public int SupplierID { get; set; }
+
+        public int CategoryID { get; set; }
+
+        public virtual Category Category { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
-        public virtual Role Role { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }
