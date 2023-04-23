@@ -67,5 +67,27 @@ namespace NiVi_Shop.Areas.Admin.Controllers
             };
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult Remove(int id)
+        {
+            try
+            {
+                var item = dbConnect.Products.Find(id);
+                if (item != null)
+                {
+                    dbConnect.Products.Remove(item);
+                    dbConnect.SaveChanges();
+                    return Json(new { success = true });
+                }
+                return Json(new { success = false });
+            }
+            catch (Exception ex)
+            {
+                // Handle exception here
+                return Json(new { success = false, error = ex.Message });
+            }
+        }
+
     }
 }

@@ -2118,6 +2118,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SupplierController.cs" />
     <Compile Include="Areas\Admin\Data\ShowModelView.cs" />
     <Compile Include="Controllers\CHAIRController.cs" />
     <Compile Include="Controllers\DECORController.cs" />
@@ -2385,6 +2386,7 @@
     <Content Include="Content\Client\build\scss\_users-list.scss" />
     <Content Include="Content\Client\build\scss\_variables-alt.scss" />
     <Content Include="Content\Client\build\scss\_variables.scss" />
+    <Content Include="Areas\Admin\Views\Supplier\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\TrangChu\Index.cshtml" />
