@@ -17,7 +17,11 @@ namespace NiVi_Shop.Controllers
         {
             
             var listProduct = new DBContextNiViShop().Products.ToList();
-            Session["Quantity"] = 0;
+            if(Session["Quantity"] == null)
+            {
+                Session["Quantity"] = 0;
+            }
+
             return View(listProduct);
         }
         public ActionResult ProductDetails(int id)

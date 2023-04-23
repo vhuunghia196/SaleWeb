@@ -232,4 +232,12 @@ B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CoreCompileInputs.cache
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CopyComplete
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.dll
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.pdb
-B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.AssemblyReference.cache
+B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.Migrations.DataBase.resources
+B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.GenerateResource.cache
+B:\SaleWeb\NiVi_Shop\bin\CloudinaryDotNet.dll
+B:\SaleWeb\NiVi_Shop\bin\Newtonsoft.Json.dll
+B:\SaleWeb\NiVi_Shop\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+B:\SaleWeb\NiVi_Shop\bin\System.Text.Encodings.Web.dll
+B:\SaleWeb\NiVi_Shop\bin\CloudinaryDotNet.xml
+B:\SaleWeb\NiVi_Shop\bin\Newtonsoft.Json.xml
+B:\SaleWeb\NiVi_Shop\bin\System.Text.Encodings.Web.xml
