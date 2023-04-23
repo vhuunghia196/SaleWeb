@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NiVi_Shop.Models.Products>
+﻿@model IEnumerable<NiVi_Shop.Models.Product>
 @{
     ViewBag.Title = "Sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -78,7 +78,7 @@
                                     {
                                         foreach (var item in Model)
                                         {
-                                            if (@item.Categories.CategoryName == "Decor")
+                                            if (@item.Category.CategoryName == "Decor")
                                             {
                                                 <tr>
                                                     <td>@item.ProductID</td>
@@ -88,7 +88,7 @@
                                                     <td>@item.Quantity</td>
                                                     <td>@item.Detail</td>
                                                     <td>@item.Supplier.Name</td>
-                                                    <td>@item.Categories.CategoryName</td>
+                                                    <td>@item.Category.CategoryName</td>
                                                 </tr>
                                             }
 
@@ -139,7 +139,7 @@
                                     {
                                         foreach (var item in Model)
                                         {
-                                            if (@item.Categories.CategoryName == "Chair")
+                                            if (@item.Category.CategoryName == "Chair")
                                             {
                                                 <tr>
                                                     <td>@item.ProductID</td>
@@ -149,7 +149,7 @@
                                                     <td>@item.Quantity</td>
                                                     <td>@item.Detail</td>
                                                     <td>@item.Supplier.Name</td>
-                                                    <td>@item.Categories.CategoryName</td>
+                                                    <td>@item.Category.CategoryName</td>
                                                 </tr>
                                             }
 
@@ -200,7 +200,7 @@
                                     {
                                         foreach (var item in Model)
                                         {
-                                            if (@item.Categories.CategoryName == "Light")
+                                            if (@item.Category.CategoryName == "Light")
                                             {
                                                 <tr>
                                                     <td>@item.ProductID</td>
@@ -210,7 +210,7 @@
                                                     <td>@item.Quantity</td>
                                                     <td>@item.Detail</td>
                                                     <td>@item.Supplier.Name</td>
-                                                    <td>@item.Categories.CategoryName</td>
+                                                    <td>@item.Category.CategoryName</td>
                                                 </tr>
                                             }
                                         }
@@ -260,7 +260,7 @@
                                     {
                                         foreach (var item in Model)
                                         {
-                                            if (@item.Categories.CategoryName == "Plant")
+                                            if (@item.Category.CategoryName == "Plant")
                                             {
                                                 <tr>
                                                     <td>@item.ProductID</td>
@@ -270,7 +270,7 @@
                                                     <td>@item.Quantity</td>
                                                     <td>@item.Detail</td>
                                                     <td>@item.Supplier.Name</td>
-                                                    <td>@item.Categories.CategoryName</td>
+                                                    <td>@item.Category.CategoryName</td>
                                                 </tr>
                                             }
 

@@ -64,7 +64,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    ;
 }
 
 .nav-mobile-content-wrap-right i {
@@ -378,6 +377,7 @@ div {
 }
 
 .container-6-bottom-inner-1 {
+    flex-wrap: wrap !important;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -385,7 +385,7 @@ div {
 
 .container-6-bottom-all {
     padding: 0 13px;
-    width: 100%
+    width: 25%;
 }
 
     .container-6-bottom-all a img {
@@ -415,12 +415,16 @@ div {
     font-size: 15px;
     margin-top: 12px;
 }
-
+.shop2 i {
+    color: white;
+    font-size: 15px;
+    margin-top: 12px;
+}
 .shop {
+    left: 350px;
     display: block;
-    position: absolute;
-    bottom: 0;
-    right: 15px;
+    position: relative;
+    top: -41px;
     text-align: center;
     width: 40px;
     height: 40px;
@@ -428,6 +432,24 @@ div {
     border-radius: 100%;
     background-color: black;
     cursor: pointer;
+}
+.shop2 {
+    left: 240px;
+    display: block;
+    position: relative;
+    top: -41px;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-width: 1px;
+    border-radius: 100%;
+    background-color: black;
+    cursor: pointer;
+}
+
+.shop2:hover {
+    background-color: #ff7012;
+    transition: .2s ease-in-out;
 }
 
     .shop:hover {
@@ -711,10 +733,10 @@ footer {
     position: absolute;
     background-color: #1d1b1b;
     width: 350px;
-    top: 40px;
-    right: -25px;
+    top: 90px;
+    right: 5px;
     cursor: auto;
-    display: none;
+     display: none; 
 }
 
 .icon a:last-child:hover .product-in-cart {
@@ -819,8 +841,8 @@ footer {
     color: white;
     padding: 10px 8px;
     background-color: #ff7012;
-    top: -1px;
-    right: -12px;
+    top: 0px;
+    right: 0px;
     font-weight: bolder;
     height: 10px;
     border-radius: 100%;

@@ -1,4 +1,5 @@
-﻿
+﻿@model List<NiVi_Shop.Models.Product>
+
 @{
     ViewBag.Title = "Index";
     //Layout = "~/Views/Shared/Shop.cshtml";
@@ -9,10 +10,11 @@
     <link href="~/Publics/css/main.css" rel="stylesheet" />
     <link href="~/Publics/css/DECOR.css" rel="stylesheet" />
     <link href="~/Publics/css/responsive.css" rel="stylesheet" />
-    <link href="~/Publics/css/SHOP.css" rel="stylesheet" />
+    <link href="~/Publics/css/SHOP.css?v=3" rel="stylesheet" />
     <script src="~/Publics/js/jquery-3.6.0.min.js"></script>
     <script src="~/Publics/js/javascript.js"></script>
     <link href="~/Publics/css/all.min.css" rel="stylesheet" />
+    <link href="~/Publics/css/detail-of-product.css" rel="stylesheet" />
 
 }
 
@@ -39,7 +41,7 @@
                         <div class="product-right-wrapper-top-inner">
                             <div class="product-right-wrapper-top-inner-all">
                                 <div class="product-right-wrapper-top-inner-all-1">
-                                    <a href="#">CHAIR</a>
+                                    <a href="@Url.Action("Index","CHAIR")">CHAIR</a>
                                 </div>
                                 <div class="product-right-wrapper-top-inner-all-2">
                                     <span>1</span>
@@ -47,7 +49,7 @@
                             </div>
                             <div class="product-right-wrapper-top-inner-all">
                                 <div class="product-right-wrapper-top-inner-all-1">
-                                    <a href="#">DECOR</a>
+                                    <a href="@Url.Action("Index","DECOR")">DECOR</a>
                                 </div>
                                 <div class="product-right-wrapper-top-inner-all-2">
                                     <span>3</span>
@@ -55,7 +57,7 @@
                             </div>
                             <div class="product-right-wrapper-top-inner-all">
                                 <div class="product-right-wrapper-top-inner-all-1">
-                                    <a href="#">LIGHT</a>
+                                    <a href="@Url.Action("Index","LIGHT")">LIGHT</a>
                                 </div>
                                 <div class="product-right-wrapper-top-inner-all-2">
                                     <span>2</span>
@@ -63,7 +65,7 @@
                             </div>
                             <div class="product-right-wrapper-top-inner-all">
                                 <div class="product-right-wrapper-top-inner-all-1">
-                                    <a href="#">PLANT</a>
+                                    <a href="@Url.Action("Index","PLANT")">PLANT</a>
                                 </div>
                                 <div class="product-right-wrapper-top-inner-all-2">
                                     <span>3</span>
@@ -104,114 +106,21 @@
                 <input type="text" placeholder="Search here..." style="float: left;">
                 <input type="button" class="Search" value="Search">
                 <ul style="margin: 0 -15px;">
-                    <li class="decor-all-left-inner">
-                        <a style="display: block" href="../HTML/Bedroom mirror.html">
-                            <img src="~/Publics/image/list-4.jpg" />
-                        </a>
-                        <div style=" margin-top: 20px; margin-bottom: 7.5px;">
-                            <h2>Bedroom mirror</h2>
-                        </div>
-                        <span>$ <bdi>4.00</bdi></span>
-                        <a class="shop">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
-                    <li class="decor-all-left-inner">
-                        <a style="display: block" href="../HTML/Cactus succulent.html">
-                            <img src="~/Publics/image/list-6.jpg" />
-                        </a>
-                        <div style=" margin-top: 20px; margin-bottom: 7.5px;">
-                            <h2>Cactus succulent</h2>
-                        </div>
-                        <span>$ <bdi>6.00</bdi></span>
-                        <a class="shop">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
-                    <li class="decor-all-left-inner">
-                        <a style="display: block" href="../HTML/Decorative pillow.html">
-                            <img src="~/Publics/image/list-7.jpg" />
-                        </a>
-                        <div style=" margin-top: 20px; margin-bottom: 7.5px;">
-                            <h2>Decorative pillow</h2>
-                        </div>
-                        <span>$ <bdi>7.00</bdi></span>
-                        <a class="shop">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
-                    <li class="decor-all-left-inner">
-                        <a style="display: block" href="../HTML/Metallic sidetable lamp.html">
-                            <img src="~/Publics/image/list-2.jpg" />
-                        </a>
-                        <div style=" margin-top: 20px; margin-bottom: 7.5px;">
-                            <h2>Metallic sidetable lamp</h2>
-                        </div>
-                        <span>$ <bdi>2.00</bdi></span>
-                        <a class="shop">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
-                    <li class="decor-all-left-inner">
-                        <a style="display: block" href="../HTML/Metallic table lamp.html">
-                            <img src="~/Publics/image/list-8.jpg" />
-                        </a>
-                        <div style=" margin-top: 20px; margin-bottom: 7.5px;">
-                            <h2>Metallic table lamp</h2>
-                        </div>
-                        <span>$ <bdi>8.00</bdi></span>
-                        <a class="shop">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
-                    <li class="decor-all-left-inner">
-                        <a style="display: block" href="../HTML/Milimalastic chair.html">
-                            <img src="~/Publics/image/list-5.jpg" />
-                        </a>
-                        <div style=" margin-top: 20px; margin-bottom: 7.5px;">
-                            <h2>Milimalastic chair</h2>
-                        </div>
-                        <span>$ <bdi>5.00</bdi></span>
-                        <a class="shop">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
-                    <li class="decor-all-left-inner">
-                        <a style="display: block" href="../HTML/Table scullent plant.html">
-                            <img src="~/Publics/image/list-1.jpg" />
-                        </a>
-                        <div style=" margin-top: 20px; margin-bottom: 7.5px;">
-                            <h2>Table scullent plant</h2>
-                        </div>
-                        <span>$ <bdi>1.00</bdi></span>
-                        <a class="shop">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
-                    <li class="decor-all-left-inner">
-                        <a style="display: block" href="../HTML/Wooden picture frame.html">
-                            <img src="~/Publics/image/list-3.jpg" />
-                        </a>
-                        <div style=" margin-top: 20px; margin-bottom: 7.5px;">
-                            <h2>Wooden picture frame</h2>
-                        </div>
-                        <span>$ <bdi>3.00</bdi></span>
-                        <a class="shop">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
-                    <li class="decor-all-left-inner">
-                        <a style="display: block" href="../HTML/Concrete flower pot.html">
-                            <img src="~/Publics/image/list-9.jpg" />
-                        </a>
-                        <div style=" margin-top: 20px; margin-bottom: 7.5px;">
-                            <h2>Concrete flower pot</h2>
-                        </div>
-                        <span>$ <bdi>9.00</bdi></span>
-                        <a class="shop">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
+                    @foreach (var product in Model)
+                    {
+                        <li class="decor-all-left-inner">
+                            <a style="display: block" href="@Url.Action("ProductDetails", "TrangChu", new { id = product.ProductID })">
+                                <img src="@product.Image" />
+                            </a>
+                            <div style=" margin-top: 20px; margin-bottom: 7.5px;">
+                                <h2>@product.Name</h2>
+                            </div>
+                            <span>$ <bdi>@product.Price</bdi></span>
+                            <a class="shop2" data-id="@product.ProductID">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
