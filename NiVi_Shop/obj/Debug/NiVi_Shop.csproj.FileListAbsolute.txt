@@ -228,11 +228,11 @@ B:\SaleWeb\NiVi_Shop\bin\System.Web.Webpages.Razor.xml
 B:\SaleWeb\NiVi_Shop\bin\System.Web.Helpers.xml
 B:\SaleWeb\NiVi_Shop\bin\System.Web.Mvc.xml
 B:\SaleWeb\NiVi_Shop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.AssemblyReference.cache
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CoreCompileInputs.cache
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CopyComplete
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.dll
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.pdb
+<<<<<<< HEAD
 E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csprojAssemblyReference.cache
 E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.Migrations.DataBase.resources
 E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.GenerateResource.cache
@@ -322,3 +322,14 @@ E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\bin\Microsoft.CodeDom.Providers.DotNetCompil
 E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CopyComplete
 E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.dll
 E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.pdb
+=======
+B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.Migrations.DataBase.resources
+B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.GenerateResource.cache
+B:\SaleWeb\NiVi_Shop\bin\CloudinaryDotNet.dll
+B:\SaleWeb\NiVi_Shop\bin\Newtonsoft.Json.dll
+B:\SaleWeb\NiVi_Shop\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+B:\SaleWeb\NiVi_Shop\bin\System.Text.Encodings.Web.dll
+B:\SaleWeb\NiVi_Shop\bin\CloudinaryDotNet.xml
+B:\SaleWeb\NiVi_Shop\bin\Newtonsoft.Json.xml
+B:\SaleWeb\NiVi_Shop\bin\System.Text.Encodings.Web.xml
+>>>>>>> 5bd9dae9251ffdc5ed54ace7b6467112f0dd6e7b

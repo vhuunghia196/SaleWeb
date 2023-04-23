@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+@section head {
+    <script src="~/Publics/js/jquery-3.6.0.min.js"></script>
+    <script src="~/Publics/js/javascript.js"></script>
+    <link href="~/Publics/css/OrderDetail.css?v=2" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" />
+    <link href="~/Publics/css/all.min.css" rel="stylesheet" />
+}
+<div class="container py-5 custom">
+    <div class="row text-center text-white mb-5">
+        <div class="col-lg-7 mx-auto">
+            <h1 class="display-4 custom1">Products Ordered</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <ul class="list-group shadow">
+                @if (Session["UserID"] != null)
+                {
+                    foreach (var orderDetail in ViewBag.OrderDetails)
+                    {
+                        <li class="list-group-item">
+                            <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                                @foreach (var distinctProducts in ViewBag.DistinctProducts)
+                                {
+                                    if (@distinctProducts.ProductID == @orderDetail.ProductID)
+                                    {
+                                        <div class="media-body order-2 order-lg-1">
+                                            <h5 class="mt-0 font-weight-bold mb-2">@distinctProducts.Name</h5>
+                                            <p class="font-italic text-muted mb-0 small">Mã sản phẩm: @orderDetail.ProductID</p>
+                                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                                <h6 class="font-weight-bold my-2">Tổng giá: $@orderDetail.Price</h6>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                                <h6 class="font-weight-bold my-2">Số lượng: @orderDetail.Quantity</h6>
+                                            </div>
+                                            @if (@orderDetail.Status == 1)
+                                            {
+                                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                                <h6 class="font-weight-bold my-2">Tình trạng: Đã nhận hàng</h6>
+                                            </div>
+                                            }
+                                            else if (@orderDetail.Status == null)
+                                            {
+                                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                                <h6 class="font-weight-bold my-2">Thanh toán lỗi</h6>
+                                            </div>
+                                            }
+                                            else
+                                            {
+                                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                                <h6 class="font-weight-bold my-2">Tình trạng: Chưa nhận hàng</h6>
+                                            </div>
+                                            }
+                                        </div><img src="@distinctProducts.Image" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                                    }
+                                }
+                            </div>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li class="list-group-item">
+                        @ViewBag.NotUserID
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+

@@ -919,12 +919,12 @@ div {
 
 .container-6-bottom-inner-1 {
     display: flex;
+    flex-wrap: wrap !important;
     justify-content: center;
     width: 100%;
 }
 
 .container-6-bottom-all {
-    position: relative;
     padding: 0 13px;
     width: 25%;
 }
@@ -959,9 +959,11 @@ div {
 
 .shop {
     display: block;
-    position: absolute;
-    right: 18px;
-    bottom: 0;
+    position: relative;
+    right: -273px;
+    top: -41px;
+    /* right: 18px; */
+    /* bottom: 248px; */
     text-align: center;
     width: 40px;
     height: 40px;
@@ -1166,8 +1168,8 @@ footer {
     position: absolute;
     background-color: #1d1b1b;
     width: 350px;
-    top: 40px;
-    right: -25px;
+    top: 90px;
+    right: 5px;
     cursor: auto;
     display: none;
 }
@@ -1194,8 +1196,8 @@ footer {
     color: white;
     padding: 10px 8px;
     background-color: #ff7012;
-    top: -1px;
-    right: -12px;
+    top: 0px;
+    right: 0px;
     font-weight: bolder;
     height: 10px;
     border-radius: 100%;

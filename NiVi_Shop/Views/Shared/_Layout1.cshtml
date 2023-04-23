@@ -11,7 +11,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="~/Publics/css/all.min.css" rel="stylesheet" />
-    <link href="~/Publics/css/main.css" rel="stylesheet" />
+    <link href="~/Publics/css/main.css?v=2" rel="stylesheet" />
+    
+    <script src="~/Publics/js/jquery-3.6.0.min.js"></script>
+    <script src="~/Publics/js/javascript.js"></script>
 
     @RenderSection("head", required: false)
 </head>
@@ -32,30 +35,29 @@
                 <a href="#" class="only"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/vhuunghiax/" class="only"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="only"><i class="fas fa-search"></i></a>
-                <a class="only">
+                <a class="only" href="@Url.Action("Cart", "TrangChu")" style="position:relative">
                     <i class="fas fa-shopping-cart"></i>
-                    <div class="product-in-cart">
-                        <div class="subtotal">
-                            <span>
-                                SUBTOTAL: $
-                                <bdi id="total" style="color: rgb(113, 113, 113); font-weight: bolder;">0.00</bdi>
-                            </span>
-                        </div>
-                        <div class="check-view">
-                            <div class="check-view-all check-view-all-left">
-                                <i class="far fa-eye"></i>
-                                View cart
-                            </div>
-                            <div class="check-view-all">
-                                <i class="far fa-check-circle"></i>
-                                Check out
-                            </div>
-                        </div>
-                    </div>
-                    <span id="quantity">
-                        0
-                    </span>
+                    @if (Session["Quantity"] != null)
+                    {
+                        <span id="quantity">
+                            @Session["Quantity"]
+                        </span>
+                    }
                 </a>
+                @if (Session["Name"] != null)
+                {
+                    string userName = "";
+                    userName = Session["Name"].ToString();
+                    <a class="username">@userName</a>
+                    <a href="@Url.Action("Logout", "Login")">LOG OUT</a>
+                }
+                else
+                {
+                <a href="@Url.Action("Login", "Login")" class="user">
+                    <strong>LOG IN</strong>
+                </a>
+                }
+
             </div>
         </div>
         <div class="nav-mobile" id="nav-mobile">

@@ -1,13 +1,5 @@
-﻿@model List<NiVi_Shop.Models.Products>
+﻿@model List<NiVi_Shop.Models.Product>
 
-@foreach (var product in Model)
-{
-    <div>
-        <h2>@product.Name</h2>
-        <p>@product.Detail</p>
-        <p>@product.Price</p>
-    </div>
-}
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout1.cshtml";
@@ -15,156 +7,13 @@
 @section head {
     <script src="~/Publics/js/jquery-3.6.0.min.js"></script>
     <script src="~/Publics/js/javascript.js"></script>
-    <link href="~/Publics/css/responsive.css" rel="stylesheet" />
-    <link href="~/Publics/css/main.css" rel="stylesheet" />
-    <link href="~/Publics/css/SHOP.css" rel="stylesheet" />
+    @*<link href="~/Publics/css/responsive.css" rel="stylesheet" />*@
+    @*<link href="~/Publics/css/main.css" rel="stylesheet" />*@
+    @*<link href="~/Publics/css/SHOP.css" rel="stylesheet" />*@
     <link href="~/Publics/css/all.min.css" rel="stylesheet" />
 }
-<header>
-    <div class="nav">
-        <a href="#" class="logo">Ni'Vi</a>
-        <ul class="menu">
-            <li><a href="@Url.Action("Index","TrangChu")">Home</a></li>
-            <li><a href="@Url.Action("Index","SHOP")">Shop</a></li>
-            <li><a href="@Url.Action("Index","DECOR")">Decor</a></li>
-            <li><a href="@Url.Action("Index","PLANT")">Plant</a></li>
-            <li><a href="@Url.Action("Index","LIGHT")">Light</a></li>
-            <li><a href="@Url.Action("Index","CHAIR")">Chair</a></li>
-        </ul>
-        <div class="icon">
-            <a href="https://www.facebook.com/vhuunghia" class="only"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="only"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/vhuunghiax/" class="only"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="only"><i class="fas fa-search"></i></a>
-            <a class="only">
-                <i class="fas fa-shopping-cart"></i>
-                <div class="product-in-cart">
-                    <div class="subtotal">
-                        <span>
-                            SUBTOTAL: $
-                            <bdi id="total" style="color: rgb(113, 113, 113); font-weight: bolder;">0.00</bdi>
-                        </span>
-                    </div>
-                    <div class="check-view">
-                        <div class="check-view-all check-view-all-left">
-                            <i class="far fa-eye"></i>
-                            View cart
-                        </div>
-                        <div class="check-view-all">
-                            <i class="far fa-check-circle"></i>
-                            Check out
-                        </div>
-                    </div>
-                </div>
-                <span id="quantity">
-                    0
-                </span>
-            </a>
-        </div>
-    </div>
-    <div class="nav-mobile" id="nav-mobile">
-        <div class="nav-mobile-1">
-            <div class="nav-mobile-content">
-                <div class="nav-mobile-content-wrap">
-                    <a href="#" class="logo">Ni'Vi</a>
-                    <div class="nav-mobile-content-wrap-right">
-                        <span class="menu-bars">
-                            <i class="fas fa-bars "></i>
-                        </span>
-                        <span class="close-menu">
-                            <i class="fas fa-times"></i>
-                        </span>
-                        <a class="only-mobile">
-                            <i class="fas fa-shopping-cart"></i>
-                            <div class="product-in-cart-mobile">
-                                <div class="subtotal-mobile">
-                                    <span>
-                                        SUBTOTAL: $
-                                        <bdi id="total-mobile" style="color: rgb(113, 113, 113); font-weight: bolder;">0.00</bdi>
-                                    </span>
-                                </div>
-                                <div class="check-view-mobile">
-                                    <div class="check-view-all-mobile check-view-all-left-mobile">
-                                        <i class="far fa-eye"></i>
-                                        View cart
-                                    </div>
-                                    <div class="check-view-all-mobile">
-                                        <i class="far fa-check-circle"></i>
-                                        Check out
-                                    </div>
-                                </div>
-                            </div>
-                            <span id="quantity-mobile">
-                                0
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <nav class="nav-mobile-content-2">
-                <div class="nav-mobile-menu">
-                    <ul class="nav-mobile-menu-top">
-                        <li>
-                            <a href="HTML/index.html">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="HTML/SHOP.html">
-                                Shop
-                            </a>
-                        </li>
-                        <li>
-                            <a href="HTML/DECOR.html">
-                                Decor
-                            </a>
-                        </li>
-                        <li>
-                            <a href="HTML/PLANT.html">
-                                Plant
-                            </a>
-                        </li>
-                        <li>
-                            <a href="HTML/LIGHT.html">
-                                Light
-                            </a>
-                        </li>
-                        <li>
-                            <a href="HTML/CHAIR.html" style="border-bottom: none;">
-                                Chair
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="nav-mobile-menu-top-middle">
-                        <div class="mobile-search">
-                            <input type="text" placeholder="Search here...">
-                            <button class="mobile-icon-search">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="nav-mobile-content-3">
-                        <a href="https://www.facebook.com/vhuunghia" class="nav-mobile-content-3-all">
-                            <span>
-                                <i class="fab fa-facebook"></i>
-                            </span>
-                        </a>
-                        <a href="#" class="nav-mobile-content-3-all">
-                            <span>
-                                <i class="fab fa-twitter"></i>
-                            </span>
-                        </a>
-                        <a href="https://www.instagram.com/vhuunghiax/" class="nav-mobile-content-3-all">
-                            <span>
-                                <i class="fab fa-instagram"></i>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-</header>
+
+
 
 <div class="main">
     <div class="left wow">
@@ -365,120 +214,24 @@
     <div class="container-6-bottom">
         <div class="container-6-bottom-inner">
             <div class="container-6-bottom-inner-1">
-                <div class="container-6-bottom-all">
-                    <a href="HTML/Table scullent plant.html">
+                @foreach (var product in Model)
+                {
+                    <div class="container-6-bottom-all">
+                        <a href="@Url.Action("ProductDetails", "TrangChu", new { id = product.ProductID })">
+                            <div>
+                                <img src="@product.Image" />
+                            </div>
+                        </a>
                         <div>
-                            <img src="~/Publics/image/list-1.jpg" />
+                            <h2>@product.Name</h2>
                         </div>
-                    </a>
-                    <div>
-                        <h2>Table scullent plant</h2>
+                        <span>$ <bdi>@product.Price</bdi></span>
+                        <a class="shop" data-id="@product.ProductID">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
                     </div>
-                    <span>$ <bdi>1.00</bdi></span>
-                    <a class="shop">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </div>
-                <div class="container-6-bottom-all">
-                    <a href="HTML/Metallic sidetable lamp.html" class="container-6-bottom-all-img">
-                        <div>
-                            <img src="~/Publics/image/list-2.jpg" />
-                        </div>
-                    </a>
-                    <div>
-                        <h2>Metallic sidetable lamp</h2>
-                    </div>
-                    <span>$ <bdi>2.00</bdi></span>
-                    <a class="shop">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </div>
-                <div class="container-6-bottom-all">
-                    <a href="HTML/Wooden picture frame.html" class="container-6-bottom-all-img">
-                        <div>
-                            <img src="~/Publics/image/list-3.jpg" />
-                        </div>
-                    </a>
-                    <div>
-                        <h2>Wooden picture frame</h2>
-                    </div>
-                    <span>$ <bdi>3.00</bdi></span>
-                    <a class="shop">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </div>
-                <div class="container-6-bottom-all">
-                    <a href="HTML/Bedroom mirror.html" class="container-6-bottom-all-img">
-                        <div>
-                            <img src="~/Publics/image/list-4.jpg" />
-                        </div>
-                    </a>
-                    <div>
-                        <h2>Bedroom mirror</h2>
-                    </div>
-                    <span>$ <bdi>4.00</bdi></span>
-                    <a class="shop">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="container-6-bottom-inner-2">
-                <div class="container-6-bottom-all">
-                    <a href="HTML/Milimalastic chair.html">
-                        <div>
-                            <img src="~/Publics/image/list-5.jpg" />
-                        </div>
-                    </a>
-                    <div>
-                        <h2>Milimalastic chair</h2>
-                    </div>
-                    <span>$ <bdi>5.00</bdi></span>
-                    <a class="shop">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </div>
-                <div class="container-6-bottom-all">
-                    <a href="HTML/Cactus succulent.html" class="container-6-bottom-all-img">
-                        <div>
-                            <img src="~/Publics/image/list-6.jpg" />
-                        </div>
-                    </a>
-                    <div>
-                        <h2>Cactus succulent</h2>
-                    </div>
-                    <span>$ <bdi>6.00</bdi></span>
-                    <a class="shop">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </div>
-                <div class="container-6-bottom-all">
-                    <a href="HTML/Decorative pillow.html" class="container-6-bottom-all-img">
-                        <div>
-                            <img src="~/Publics/image/list-7.jpg" />
-                        </div>
-                    </a>
-                    <div>
-                        <h2>Decorative pillow</h2>
-                    </div>
-                    <span>$ <bdi>7.00</bdi></span>
-                    <a class="shop">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </div>
-                <div class="container-6-bottom-all">
-                    <a href="HTML/Metallic table lamp.html" class="container-6-bottom-all-img">
-                        <div>
-                            <img src="~/Publics/image/list-8.jpg" />
-                        </div>
-                    </a>
-                    <div>
-                        <h2 id="name">Metallic table lamp</h2>
-                    </div>
-                    <span>$ <bdi>8.00</bdi></span>
-                    <a class="shop">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </div>
+                }
+
             </div>
         </div>
     </div>

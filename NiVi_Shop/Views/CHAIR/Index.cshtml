@@ -1,4 +1,4 @@
-﻿
+﻿@model List<NiVi_Shop.Models.Product>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout1.cshtml";
@@ -8,7 +8,7 @@
     <link href="~/Publics/css/main.css" rel="stylesheet" />
     <link href="~/Publics/css/DECOR.css" rel="stylesheet" />
     <link href="~/Publics/css/responsive.css" rel="stylesheet" />
-    <link href="~/Publics/css/SHOP.css" rel="stylesheet" />
+    <link href="~/Publics/css/SHOP.css?v=3" rel="stylesheet" />
     <script src="~/Publics/js/jquery-3.6.0.min.js"></script>
     <script src="~/Publics/js/javascript.js"></script>
     <link href="~/Publics/css/all.min.css" rel="stylesheet" />
@@ -35,8 +35,9 @@
                         <h3>Categories</h3>
                         <div class="product-right-wrapper-top-inner">
                             <div class="product-right-wrapper-top-inner-all">
+
                                 <div class="product-right-wrapper-top-inner-all-1">
-                                    <a href="#">CHAIR</a>
+                                    <a href="@Url.Action("Index","CHAIR")">CHAIR</a>
                                 </div>
                                 <div class="product-right-wrapper-top-inner-all-2">
                                     <span>1</span>
@@ -44,7 +45,7 @@
                             </div>
                             <div class="product-right-wrapper-top-inner-all">
                                 <div class="product-right-wrapper-top-inner-all-1">
-                                    <a href="#">DECOR</a>
+                                    <a href="@Url.Action("Index","DECOR")">DECOR</a>
                                 </div>
                                 <div class="product-right-wrapper-top-inner-all-2">
                                     <span>3</span>
@@ -52,7 +53,7 @@
                             </div>
                             <div class="product-right-wrapper-top-inner-all">
                                 <div class="product-right-wrapper-top-inner-all-1">
-                                    <a href="#">LIGHT</a>
+                                    <a href="@Url.Action("Index","LIGHT")">LIGHT</a>
                                 </div>
                                 <div class="product-right-wrapper-top-inner-all-2">
                                     <span>2</span>
@@ -60,7 +61,7 @@
                             </div>
                             <div class="product-right-wrapper-top-inner-all">
                                 <div class="product-right-wrapper-top-inner-all-1">
-                                    <a href="#">PLANT</a>
+                                    <a href="@Url.Action("Index","PLANT")">PLANT</a>
                                 </div>
                                 <div class="product-right-wrapper-top-inner-all-2">
                                     <span>3</span>
@@ -101,18 +102,21 @@
                 <input type="text" placeholder="Search here..." style="float: left;">
                 <input type="button" class="Search" value="Search">
                 <ul style="margin: 0 -15px;">
-                    <li class="decor-all-left-inner">
-                        <a style="display: block" href="../HTML/Milimalastic chair.html">
-                            <img src="~/Publics/image/list-5.jpg" />
-                        </a>
-                        <div style=" margin-top: 20px; margin-bottom: 7.5px;">
-                            <h2>Milimalastic chair</h2>
-                        </div>
-                        <span>$ <bdi>5.00</bdi></span>
-                        <a class="shop">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
+                    @foreach (var product in Model)
+                    {
+                        <li class="decor-all-left-inner">
+                            <a style="display: block" href="@Url.Action("ProductDetails", "TrangChu", new { id = product.ProductID })">
+                                <img src="@product.Image" />
+                            </a>
+                            <div style=" margin-top: 20px; margin-bottom: 7.5px;">
+                                <h2>@product.Name</h2>
+                            </div>
+                            <span>$ <bdi>@product.Price</bdi></span>
+                            <a class="shop2" data-id="@product.ProductID">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>

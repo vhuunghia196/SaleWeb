@@ -1,7 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
+
     $(".go-to-top").hide()
     $(window).scroll(function(){
-        if($(this).scrollTop()){
+        /*if($(this).scrollTop()){
             $('header').addClass('sticky');
             $('#nav-mobile').addClass('sticky-mobile');
             $('#nav-mobile').removeClass('nav-mobile');
@@ -9,7 +10,7 @@ $(document).ready(function() {
             $('header').removeClass('sticky');
             $('#nav-mobile').removeClass('sticky-mobile');
             $('#nav-mobile').addClass('nav-mobile');
-        }
+        }*/
         if($(this).scrollTop() > 250){
             $(".go-to-top").show("slow")
         }
@@ -38,79 +39,6 @@ $(document).ready(function() {
         setTimeout(function(){
             $(".decor-all-left-inner").removeClass("active")
         }, 5000)
-    })
-
-
-    var subtotal=0;
-    var quantity=0;
-    var remove_together=0;
-    $(".shop").click(function(){
-        remove_together+=1;
-        $(this).addClass("animate__animated animate__bounce")
-        $(this).parent().addClass("temp")
-        var _name=$(".temp h2").html()
-        var _price=$(".temp bdi").html()
-        var _img=$(".temp img").attr("src")
-        subtotal+= parseInt(_price)
-        quantity+=1;
-        $(".product-in-cart").prepend(`
-            <div class="number-products remove-together${remove_together}">
-                <img src="${_img}">
-                <div style=" margin-left: 20px; width: 100%; line-height: 20px; height: 65px;">
-                    <div>
-                        <span class="number-products-name">
-                            ${_name}
-                        </span>
-                        <p class="number-products-price">
-                            <span style="color: #ff7012;">$</span> 
-                            <bdi style="color: #ff7012;">${_price}</bdi>
-                        </p>
-                        <input type="button" value="×" id="remove-product">
-                    </div>
-                </div>
-            </div>
-        `
-        )
-        document.getElementById("total").innerHTML= subtotal;
-        document.getElementById("quantity").innerHTML= quantity;
-
-        $(".product-in-cart-mobile").prepend(`
-            <div class="number-products remove-together${remove_together}">
-                <img src="${_img}">
-                <div style=" margin-left: 20px; width: 100%; line-height: 20px; height: 65px;">
-                    <div>
-                        <span class="number-products-name">
-                            ${_name}
-                        </span>
-                        <p class="number-products-price">
-                            <span style="color: #ff7012;">$</span> 
-                            <bdi style="color: #ff7012;">${_price}</bdi>
-                        </p>
-                        <input type="button" value="×" id="remove-product">
-                    </div>
-                </div>
-            </div>
-        `
-        )
-        document.getElementById("total-mobile").innerHTML= subtotal;
-        document.getElementById("quantity-mobile").innerHTML= quantity;
-        $(this).parent().removeClass("temp")
-    })
-    
-    $(".product-in-cart-together").on("click","#remove-product", function(){
-        $(this).parent().parent().parent().addClass("temp")
-        var minus=$(".temp bdi").html()
-        $(this).parent().parent().parent().removeClass("temp")
-        $(this).parent().parent().parent().removeClass("number-products")
-        $(this).parent().parent().parent().remove()
-        var temp_class=$(this).parent().parent().parent().attr("class")
-        $(`.remove-together${parseInt(temp_class.substr(-1,1))}`).remove()
-        quantity-=1;
-        subtotal-= parseInt(minus)
-        document.getElementById("quantity").innerHTML= quantity;
-        document.getElementById("total").innerHTML= subtotal;
-        document.getElementById("quantity-mobile").innerHTML= quantity;
-        document.getElementById("total-mobile").innerHTML= subtotal;
     })
 
     var quantity_of_products=0;
@@ -183,7 +111,84 @@ $(document).ready(function() {
     $(".only-mobile").click(function(){
         $(".product-in-cart-mobile").toggle()
     })
+    // thêm vào giỏ hàng
 
+    $(".shop").off("click").on("click", function (e) {
+        e.preventDefault();
+        var productId = $(this).data("id");
+        $.ajax({
+            type: "POST",
+            url: "/TrangChu/AddToCart",
+            data: { id: productId },
+            success: function (data) {
+                if (data.success) {
+                    var quantitySpan = document.getElementById("quantity");
+                    quantitySpan.innerHTML = parseInt(quantitySpan.innerHTML) + 1;
+                    alert("SẢN PHẨM ĐÃ ĐƯỢC THÊM VÀO GIỎ HÀNG THÀNH CÔNG");
+
+                } else {
+                    alert("Đã có lỗi xảy ra, vui lòng thử lại sau");
+                    $(this).prop('disabled', false);
+                }
+            },
+            error: function () {
+                alert("Đã có lỗi xảy ra, vui lòng thử lại sau");
+                $(element).prop('disabled', false);
+            }
+        });
+    });
+    $(".shop2").off("click").on("click", function (e) {
+        e.preventDefault();
+        var productId = $(this).data("id");
+        $.ajax({
+            type: "POST",
+            url: "/TrangChu/AddToCart",
+            data: { id: productId },
+            success: function (data) {
+                if (data.success) {
+                    var quantitySpan = document.getElementById("quantity");
+
+                    quantitySpan.innerHTML = parseInt(quantitySpan.innerHTML) + 1;
+                    alert("SẢN PHẨM ĐÃ ĐƯỢC THÊM VÀO GIỎ HÀNG THÀNH CÔNG");
+
+                } else {
+                    alert("Đã có lỗi xảy ra, vui lòng thử lại sau");
+                }
+            },
+            error: function () {
+                alert("Đã có lỗi xảy ra, vui lòng thử lại sau");
+            }
+        });
+    });
+    // xóa sản phảm khỏi giỏ hàng
+    $('.delete-item').click(function (e) {
+        e.preventDefault();
+        var productId = $(this).data('product-id');
+        var quantity = $(this).closest('tr').find('[data-quantity]').data('quantity');
+        // Gửi yêu cầu xóa sản phẩm đến server.
+        $.ajax({
+            url: "/TrangChu/RemoveFromCart",
+            type: 'POST',
+            data: { id: productId },
+            success: function (result) {
+                if (result.success) {
+                    // Nếu xóa sản phẩm thành công, cập nhật lại thông tin giỏ hàng trên giao diện.
+                    // ...
+
+                    var quantitySpan = document.getElementById("quantity");
+                    quantitySpan.innerHTML = parseInt(quantitySpan.innerHTML) - quantity;
+                    /*if (isNaN(quantitySpan.innerHTML)) {
+                        quantity = 0;
+                    }*/
+                    var rowToDelete = $('.delete-item[data-product-id="' + productId + '"]').closest('tr');
+                    rowToDelete.remove();
+                }
+            },
+            error: function () {
+                alert('Xóa sản phẩm không thành công.');
+            }
+        });
+    });
 
     new WOW().init();
 });

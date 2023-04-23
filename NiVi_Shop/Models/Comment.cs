@@ -27,9 +27,9 @@ namespace NiVi_Shop.Models
 
         public int? UserID { get; set; }
 
-        public virtual Products Products { get; set; }
+        public virtual Product Product { get; set; }
 
-        public virtual Users Users { get; set; }
+        public virtual User User { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comment1 { get; set; }
