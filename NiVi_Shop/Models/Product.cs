@@ -25,8 +25,9 @@ namespace NiVi_Shop.Models
 
         public double Price { get; set; }
 
-        public int? Quantity { get; set; }
+        public int Quantity { get; set; }
 
+        [Required]
         public string Detail { get; set; }
 
         public int SupplierID { get; set; }

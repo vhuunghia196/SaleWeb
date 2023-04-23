@@ -106,8 +106,12 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Publics\css\all.min.css" />
+    <Content Include="Publics\css\Cart.css" />
     <Content Include="Publics\css\DECOR.css" />
+    <Content Include="Publics\css\detail-of-product.css" />
+    <Content Include="Publics\css\Login.css" />
     <Content Include="Publics\css\main.css" />
+    <Content Include="Publics\css\OrderDetail.css" />
     <Content Include="Publics\css\responsive.css" />
     <Content Include="Publics\css\SHOP.css" />
     <Content Include="Publics\image\1.jpg" />
@@ -157,6 +161,8 @@
     <Compile Include="Controllers\CHAIRController.cs" />
     <Compile Include="Controllers\DECORController.cs" />
     <Compile Include="Controllers\LIGHTController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OrderDetailController.cs" />
     <Compile Include="Controllers\PLANTController.cs" />
     <Compile Include="Controllers\SHOPController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
@@ -208,6 +214,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Views\TrangChu\ProductDetails.cshtml" />
+    <Content Include="Views\TrangChu\Cart.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\OrderDetail\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

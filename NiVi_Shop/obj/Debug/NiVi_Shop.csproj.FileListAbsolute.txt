@@ -228,8 +228,8 @@ B:\SaleWeb\NiVi_Shop\bin\System.Web.Webpages.Razor.xml
 B:\SaleWeb\NiVi_Shop\bin\System.Web.Helpers.xml
 B:\SaleWeb\NiVi_Shop\bin\System.Web.Mvc.xml
 B:\SaleWeb\NiVi_Shop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.AssemblyReference.cache
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CoreCompileInputs.cache
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CopyComplete
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.dll
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.pdb
+B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.AssemblyReference.cache
