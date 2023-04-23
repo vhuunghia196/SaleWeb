@@ -19,22 +19,7 @@
     </ul>
 }
 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Product Managment</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Product</li>
-                </ol>
-            </div>
-        </div>
-    </div><!-- /.container-fluid -->
-</section>
+
 <div class="card">
     <div class="card-header p-2">
         <ul class="nav nav-pills">
@@ -80,7 +65,7 @@
                                         {
                                             if (@item.Categories.CategoryName == "Decor")
                                             {
-                                                <tr>
+                                                <tr id="@item.ProductID">
                                                     <td>@item.ProductID</td>
                                                     <td>@item.Name</td>
                                                     <td><img src="@item.Image" width="100px" alt="IMAGE" /></td>
@@ -89,6 +74,8 @@
                                                     <td>@item.Detail</td>
                                                     <td>@item.Supplier.Name</td>
                                                     <td>@item.Categories.CategoryName</td>
+                                                    <td><button class="btn btn-danger remove-product">Remove</button></td>
+                                                    <td><button class="btn btn-primary">Update</button></td>
                                                 </tr>
                                             }
 
@@ -141,7 +128,7 @@
                                         {
                                             if (@item.Categories.CategoryName == "Chair")
                                             {
-                                                <tr>
+                                                <tr id="trow_@item.ProductID">
                                                     <td>@item.ProductID</td>
                                                     <td>@item.Name</td>
                                                     <td><img src="@item.Image" width="100px" alt="IMAGE" /></td>
@@ -150,6 +137,8 @@
                                                     <td>@item.Detail</td>
                                                     <td>@item.Supplier.Name</td>
                                                     <td>@item.Categories.CategoryName</td>
+                                                    <td><button class="btn btn-danger remove-product">Remove</button></td>
+                                                    <td><button class="btn btn-primary">Update</button></td>
                                                 </tr>
                                             }
 
@@ -202,7 +191,7 @@
                                         {
                                             if (@item.Categories.CategoryName == "Light")
                                             {
-                                                <tr>
+                                                <tr id="trow_@item.ProductID">
                                                     <td>@item.ProductID</td>
                                                     <td>@item.Name</td>
                                                     <td><img src="@item.Image" width="100px" alt="IMAGE" /></td>
@@ -211,6 +200,8 @@
                                                     <td>@item.Detail</td>
                                                     <td>@item.Supplier.Name</td>
                                                     <td>@item.Categories.CategoryName</td>
+                                                    <td><button class="btn btn-danger remove-product">Remove</button></td>
+                                                    <td><button class="btn btn-primary">Update</button></td>
                                                 </tr>
                                             }
                                         }
@@ -262,7 +253,7 @@
                                         {
                                             if (@item.Categories.CategoryName == "Plant")
                                             {
-                                                <tr>
+                                                <tr id="trow_@item.ProductID">
                                                     <td>@item.ProductID</td>
                                                     <td>@item.Name</td>
                                                     <td><img src="@item.Image" width="100px" alt="IMAGE" /></td>
@@ -271,6 +262,8 @@
                                                     <td>@item.Detail</td>
                                                     <td>@item.Supplier.Name</td>
                                                     <td>@item.Categories.CategoryName</td>
+                                                    <td><button class="btn btn-danger remove-product">Remove</button></td>
+                                                    <td><button class="btn btn-primary">Update</button></td>
                                                 </tr>
                                             }
 
@@ -301,3 +294,29 @@
     </div><!-- /.card-body -->
 </div>
 
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '.remove-product', function () {
+                var tr = $(this).closest('tr');
+                var id = tr.attr('id');
+                var conf = confirm('Bạn chắc chắn xóa sản phẩm này không');
+                if (conf === true) {
+                    // Gọi API xóa sản phẩm với id tương ứng
+                    $.ajax({
+                        url: '/admin/product/remove',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                tr.remove();
+                            } else {
+                                alert("Remove fail!!")
+                            }
+                        }
+                    })
+                }
+            })
+        })
+    </script>
+}
