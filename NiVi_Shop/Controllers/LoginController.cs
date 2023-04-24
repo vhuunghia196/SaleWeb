@@ -34,6 +34,7 @@ namespace NiVi_Shop.Controllers
                         FormsAuthentication.SetAuthCookie(i.Username, true);
                         Session["Name"] = i.Name;
                         Session["UserID"] = i.UserID;
+                        Session["RoleID"] = i.RoleID;
                         return RedirectToAction("Index", "TrangChu");
                     }
                     else
@@ -52,6 +53,7 @@ namespace NiVi_Shop.Controllers
             FormsAuthentication.SignOut();
             Session.Remove("Name");
             Session.Remove("UserID");
+            Session.Remove("RoleID");
             // Chuyển hướng đến trang đăng nhập
             return RedirectToAction("Login", "Login");
         }

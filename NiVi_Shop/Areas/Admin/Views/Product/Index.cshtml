@@ -22,12 +22,6 @@
 
 <div class="card">
     <div class="card-header p-2">
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a class="nav-link active" href="#Decor" data-toggle="tab">Decor</a></li>
-            <li class="nav-item"><a class="nav-link" href="#Chair" data-toggle="tab">Chair</a></li>
-            <li class="nav-item"><a class="nav-link" href="#Light" data-toggle="tab">Light</a></li>
-            <li class="nav-item"><a class="nav-link" href="#Plant" data-toggle="tab">Plant</a></li>
-        </ul>
         <div class="card-header">
             <h3 class="card-title">Product List</h3>
 
@@ -35,6 +29,12 @@
                 <a href="/admin/product/add" class="btn btn-primary">Add</a>
             </div>
         </div>
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a class="nav-link active" href="#Decor" data-toggle="tab">Decor</a></li>
+            <li class="nav-item"><a class="nav-link" href="#Chair" data-toggle="tab">Chair</a></li>
+            <li class="nav-item"><a class="nav-link" href="#Light" data-toggle="tab">Light</a></li>
+            <li class="nav-item"><a class="nav-link" href="#Plant" data-toggle="tab">Plant</a></li>
+        </ul>
     </div><!-- /.card-header -->
     <div class="card-body">
         <div class="tab-content">
@@ -75,7 +75,7 @@
                                                     <td>@item.Supplier.Name</td>
                                                     <td>@item.Category.CategoryName</td>
                                                     <td><button class="btn btn-danger remove-product">Remove</button></td>
-                                                    <td><button class="btn btn-primary">Update</button></td>
+                                                    <td><a href="/admin/product/edit/@item.ProductID" class="btn btn-primary update-product">Update</a></td>
                                                 </tr>
                                             }
 
@@ -138,7 +138,7 @@
                                                     <td>@item.Supplier.Name</td>
                                                     <td>@item.Category.CategoryName</td>
                                                     <td><button class="btn btn-danger remove-product">Remove</button></td>
-                                                    <td><button class="btn btn-primary">Update</button></td>
+                                                    <td><a href="/admin/product/edit/@item.ProductID" class="btn btn-primary update-product">Update</a></td>
                                                 </tr>
                                             }
 
@@ -201,7 +201,7 @@
                                                     <td>@item.Supplier.Name</td>
                                                     <td>@item.Category.CategoryName</td>
                                                     <td><button class="btn btn-danger remove-product">Remove</button></td>
-                                                    <td><button class="btn btn-primary">Update</button></td>
+                                                    <td><a href="/admin/product/edit/@item.ProductID" class="btn btn-primary update-product">Update</a></td>
                                                 </tr>
                                             }
                                         }
@@ -263,7 +263,7 @@
                                                     <td>@item.Supplier.Name</td>
                                                     <td>@item.Category.CategoryName</td>
                                                     <td><button class="btn btn-danger remove-product">Remove</button></td>
-                                                    <td><button class="btn btn-primary">Update</button></td>
+                                                    <td><a href="/admin/product/edit/@item.ProductID" class="btn btn-primary update-product">Update</a></td>
                                                 </tr>
                                             }
 
@@ -316,6 +316,17 @@
                         }
                     })
                 }
+            })
+        })
+        $(document).ready(function () {
+            $('body').on('click', '.update-product', function () {
+                var tr = $(this).closest('tr');
+                var id = tr.attr('id');
+                $.ajax({
+                    url: `/admin/product/edit/${id}`,
+                    type: 'POST',
+                    data: { id: id }
+                })
             })
         })
     </script>
