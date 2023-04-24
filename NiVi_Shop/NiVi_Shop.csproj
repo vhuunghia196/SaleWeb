@@ -2116,9 +2116,11 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminAuthorizeAttribute .cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SupplierController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Data\ShowModelView.cs" />
     <Compile Include="Controllers\CHAIRController.cs" />
     <Compile Include="Controllers\DECORController.cs" />
@@ -2387,6 +2389,9 @@
     <Content Include="Content\Client\build\scss\_variables-alt.scss" />
     <Content Include="Content\Client\build\scss\_variables.scss" />
     <Content Include="Areas\Admin\Views\Supplier\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Forbidden\index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\TrangChu\Index.cshtml" />

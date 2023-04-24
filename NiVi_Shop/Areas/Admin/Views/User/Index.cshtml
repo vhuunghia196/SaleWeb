@@ -1,0 +1,252 @@
+﻿@model IEnumerable<NiVi_Shop.Models.User>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section naviheader {
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">User</a>
+        </li>
+    </ul>
+}
+
+<div class="card">
+    <div class="card-header p-2">
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a class="nav-link active" href="#Decor" id="view-tab" data-toggle="tab">View</a></li>
+            <li class="nav-item"><a class="nav-link" href="#Chair" id="add-tab" data-toggle="tab">ADD</a></li>
+        </ul>
+    </div><!-- /.card-header -->
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane active" id="Decor">
+                <!-- Main content -->
+                <section class="content">
+                    <!-- Default box -->
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Id
+                                        </th>
+                                        <th>Name</th>
+                                        <th>UserName</th>
+                                        <th>Phone number</th>
+                                        <th>Address</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                        <tr id="@item.UserID">
+                                            <td>@item.UserID</td>
+                                            <td class="name-user">@item.Name</td>
+                                            <td class="phone-user">@item.Username</td>
+                                            <td class="address-user">@item.PhoneNumber</td>
+                                            <td class="company-user">@item.Address</td>
+                                            <td class="company-user">@item.Email</td>
+                                        <td class="company-user">
+                                            @Html.DropDownListFor(i => item.RoleID, ViewBag.Role as SelectList, item.Role.RoleName, new { @class="UserRole" })
+
+                                        </td>
+                                            <td>
+                                                <button class="btn btn-danger remove-user">Remove</button>
+                                                <button class="btn btn-primary update-user" disabled>Update</button>
+                                            </td>
+                                        </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="8">No supplier</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                        </div>
+                        <!-- /.card-footer-->
+                    </div>
+                    <!-- /.card -->
+
+                </section>
+            </div>
+            <!-- /.tab-pane -->
+            <div class="tab-pane" id="Chair">
+                <section class="content">
+                    <div class="col-md-6">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Quick Example</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            @using (Html.BeginForm("Add", "User", FormMethod.Post, new { Action = "/admin/user" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary()
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">UserName <span style="color:red">(*)</span></label>
+                                        <input type="text" class="form-control" id="UserName" placeholder="UserName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Password <span style="color:red">(*)</span></label>
+                                        <input type="text" class="form-control" id="Password" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Confirm Password <span style="color:red">(*)</span></label>
+                                        <input type="text" class="form-control" id="ConfirmPassword" placeholder="Confirm Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Name <span style="color:red">(*)</span></label>
+                                        <input type="text" class="form-control" id="Name" placeholder="Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Phone number <span style="color:red">(*)</span></label>
+                                        <input type="text" class="form-control" id="Phone" placeholder="Phone number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Address <span style="color:red">(*)</span></label>
+                                        <input type="text" class="form-control" id="Address" placeholder="Address">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Email <span style="color:red">(*)</span></label>
+                                        <input type="text" class="form-control" id="Email" placeholder="Company name">
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="Role">
+                                            <option>Admin</option>
+                                            <option>Cus</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" id="submit" class="btn btn-primary">Add</button>
+                                </div>
+                            }
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </section>
+            </div>
+        </div><!-- /.card-body -->
+    </div>
+</div>
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '#submit', function () {
+                var name = $("#Name").val();
+                var username = $("#UserName").val();
+                var password = $("#Password").val();
+                var confpassword = $("#ConfirmPassword").val();
+                var phone = $("#Phone").val();
+                var address = $("#Address").val();
+                var email = $("#Email").val();
+                var role = $("#Role").val();
+                if (password === confpassword) {
+                    $.ajax({
+                        url: '/admin/user/add',
+                        type: 'POST',
+                        data: {
+                            name: name,
+                            username: username,
+                            password: password,
+                            phone: phone,
+                            address: address,
+                            email: email,
+                            role: role
+                        },
+                        success: function (rs) {
+                            if (rs.success == 1) {
+                                location.reload();
+                                alert("Success!!")
+                            } else {
+                                alert("Fail!!")
+                            }
+                        }
+                    })
+                } else {
+                    alert("Confirm password is incorrect")
+                }
+                
+            })
+        })
+        $(document).ready(function () {
+            $('body').on('click', '.remove-user', function () {
+                var tr = $(this).closest('tr');
+                var id = tr.attr('id');
+                var conf = confirm('Delete now ???');
+                if (conf === true) {
+                    $.ajax({
+                        url: "/admin/user/remove",
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                tr.remove();
+                            } else {
+                                alert("Remove fail!!")
+                            }
+                        }
+                    })
+                }
+            })
+        })
+        $(document).ready(function () {
+            $('.UserRole').change(function () {
+                $(this).closest('tr').find('.update-user').removeAttr('disabled');
+            });
+        })
+        $(document).ready(function () {
+            $('body').on('click', '.update-user', function () {
+                var tr = $(this).closest("tr");
+                var id = tr.attr("id");
+                var role = $(this).closest("tr").find('.UserRole').val();
+                if (role != null) {
+                    $.ajax({
+                        url: "/admin/user/edit",
+                        type: 'POST',
+                        data: {
+                            id: id,
+                            role: role
+                        },
+                        success: function (rs) {
+                            if (rs.success == 1) {
+                                location.reload();
+                                alert("Success!!")
+                            } else {
+                                alert("Fail!!")
+                            }
+                        }
+                    })
+                }
+                else {
+                    alert("Role is not change")
+                }
+            })
+        })
+    </script>
+}

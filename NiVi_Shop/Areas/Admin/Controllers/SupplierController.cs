@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace NiVi_Shop.Areas.Admin.Controllers
 {
+    [AdminAuthorizeAttribute]
     public class SupplierController : Controller
     {
         DBContextNiViShop dbConnect = new DBContextNiViShop();
@@ -27,9 +28,9 @@ namespace NiVi_Shop.Areas.Admin.Controllers
             {
                 foreach (Supplier i in dbConnect.Suppliers)
                 {
-                    if(i.Name == name && i.PhoneNumber == phone && i.Address == address && i.CompanyName == company)
+                    if (i.Name == name && i.PhoneNumber == phone && i.Address == address && i.CompanyName == company)
                         return Json(new { success = false });
-                }    
+                }
                 Supplier s = new Supplier();
                 s.Name = name;
                 s.PhoneNumber = phone;
@@ -59,6 +60,33 @@ namespace NiVi_Shop.Areas.Admin.Controllers
                 if (item != null)
                 {
                     dbConnect.Suppliers.Remove(item);
+                    dbConnect.SaveChanges();
+                    return Json(new { success = true });
+                }
+                return Json(new { success = false });
+            }
+            catch (Exception ex)
+            {
+                // Handle exception here
+                return Json(new { success = false, error = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, String name, String phone, String address, String company)
+        {
+            try
+            {
+                String a = name;
+                var s = dbConnect.Suppliers.Find(id);
+                if (s != null)
+                {
+                    s.Name = name;
+                    s.PhoneNumber = phone;
+                    s.Address = address;
+                    s.CompanyName = company;
+                    //dbConnect.Suppliers.Attach(s);
+                    //dbConnect.Entry(s).State = System.Data.Entity.EntityState.Modified;
                     dbConnect.SaveChanges();
                     return Json(new { success = true });
                 }
