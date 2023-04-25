@@ -86,3 +86,4 @@ E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CoreCompileInputs
 E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CopyComplete
 E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.dll
 E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.pdb
+E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csprojAssemblyReference.cache
