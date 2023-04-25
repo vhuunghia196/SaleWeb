@@ -39,7 +39,7 @@ namespace NiVi_Shop.Controllers
         public ActionResult Cart()
         {
             var db = new DBContextNiViShop();
-            var cart = (List<Product>)Session["Cart"];
+            var cart = (List<Products>)Session["Cart"];
             var category_name = db.Categories.ToList();
             ViewBag.CategoryName = category_name;
 
@@ -74,11 +74,11 @@ namespace NiVi_Shop.Controllers
                 // Nếu Session["Cart"] chưa tồn tại, tạo một List để lưu trữ các sản phẩm.
                 if (Session["Cart"] == null)
                 {
-                    Session["Cart"] = new List<Product>();
+                    Session["Cart"] = new List<Products>();
                 }
 
                 // Lấy List đã lưu từ Session.
-                var cart = (List<Product>)Session["Cart"];
+                var cart = (List<Products>)Session["Cart"];
 
                 // Kiểm tra sản phẩm đã tồn tại trong giỏ hàng hay chưa.
                 var existingProduct = cart.FirstOrDefault(p => p.ProductID == id);
@@ -113,7 +113,7 @@ namespace NiVi_Shop.Controllers
         public ActionResult RemoveFromCart(int id)
         {
             // Lấy List đã lưu từ Session.
-            var cart = (List<Product>)Session["Cart"];
+            var cart = (List<Products>)Session["Cart"];
 
             // Tìm kiếm sản phẩm trong giỏ hàng.
             var product = cart.FirstOrDefault(p => p.ProductID == id);

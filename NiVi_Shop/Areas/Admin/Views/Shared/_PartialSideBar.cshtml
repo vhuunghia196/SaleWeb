@@ -6,7 +6,7 @@
             <i class="fa fa-user fa-inverse"></i>
         </div>
         <div class="info">
-            <a href="#" class="d-block">@Session["Name"]</a>
+            <a href="/admin/home" class="d-block">@Session["Name"]</a>
         </div>
     </div>
 
@@ -21,12 +21,11 @@
             </div>
         </div>
     </div>-->
-
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
+            with font-awesome or any other icon font library -->
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -37,9 +36,9 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="~/Content/Client/index.html" class="nav-link">
+                        <a href="/admin/statistics" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Dashboard v1</p>
+                            <p>Pie</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -79,12 +78,27 @@
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         User
-                        <span class="right badge badge-danger">New</span>
                     </p>
                 </a>
             </li>
         </ul>
     </nav>
+
+    <a href="/" class="back-button" style="        display: inline-block;
+        background: #f5b5fa;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+        position: fixed;
+        bottom: 30px;
+        left:30px">
+        <i class="fas fa-chevron-left"></i>
+        BACK TO HOME
+    </a>
     <!-- /.sidebar-menu -->
 </div>
 <!-- /.sidebar -->

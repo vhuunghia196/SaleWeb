@@ -6,22 +6,24 @@ namespace NiVi_Shop.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Category
+    public partial class Orders
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
+        public Orders()
         {
-            Products = new HashSet<Product>();
+            OrderDetail = new HashSet<OrderDetail>();
         }
 
-        public int CategoryID { get; set; }
+        [Key]
+        public int OrderID { get; set; }
 
-        public string CategoryName { get; set; }
+        public int UserID { get; set; }
 
-        [Required]
-        public string Description { get; set; }
+        public DateTime OrderDate { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
+
+        public virtual Users Users { get; set; }
     }
 }
