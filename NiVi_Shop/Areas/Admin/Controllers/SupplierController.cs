@@ -7,7 +7,6 @@ using System.Web.Mvc;
 
 namespace NiVi_Shop.Areas.Admin.Controllers
 {
-    [AdminAuthorizeAttribute]
     public class SupplierController : Controller
     {
         DBContextNiViShop dbConnect = new DBContextNiViShop();
@@ -15,7 +14,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         public ActionResult Index()
         {
             //ViewBag.Supplier = new SelectList(dbConnect.Supplier.ToList());
-            var supplier = dbConnect.Suppliers.ToList();
+            var supplier = dbConnect.Supplier.ToList();
             return View(supplier);
         }
 
@@ -26,7 +25,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         {
             try
             {
-                foreach (Supplier i in dbConnect.Suppliers)
+                foreach (Supplier i in dbConnect.Supplier)
                 {
                     if (i.Name == name && i.PhoneNumber == phone && i.Address == address && i.CompanyName == company)
                         return Json(new { success = false });
@@ -38,7 +37,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
                 s.CompanyName = company;
                 if (s != null)
                 {
-                    dbConnect.Suppliers.Add(s);
+                    dbConnect.Supplier.Add(s);
                     dbConnect.SaveChanges();
                     return Json(new { success = true });
                 }
@@ -56,10 +55,10 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         {
             try
             {
-                var item = dbConnect.Suppliers.Find(id);
+                var item = dbConnect.Supplier.Find(id);
                 if (item != null)
                 {
-                    dbConnect.Suppliers.Remove(item);
+                    dbConnect.Supplier.Remove(item);
                     dbConnect.SaveChanges();
                     return Json(new { success = true });
                 }
@@ -78,7 +77,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
             try
             {
                 String a = name;
-                var s = dbConnect.Suppliers.Find(id);
+                var s = dbConnect.Supplier.Find(id);
                 if (s != null)
                 {
                     s.Name = name;

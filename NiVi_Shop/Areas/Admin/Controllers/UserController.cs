@@ -7,14 +7,13 @@ using System.Web.Mvc;
 
 namespace NiVi_Shop.Areas.Admin.Controllers
 {
-    [AdminAuthorizeAttribute]
     public class UserController : Controller
     {
         DBContextNiViShop dbConnect = new DBContextNiViShop();
         // GET: Admin/User
         public ActionResult Index()
         {
-            ViewBag.Role = new SelectList(dbConnect.Roles.ToList(), "RoleID", "RoleName");
+            ViewBag.Role = new SelectList(dbConnect.Role.ToList(), "RoleID", "RoleName");
             var user = dbConnect.Users.ToList();
             return View(user);
         }
@@ -44,12 +43,12 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         {
             try
             {
-                var r = dbConnect.Roles.FirstOrDefault(a => a.RoleName == role);
+                var r = dbConnect.Role.FirstOrDefault(a => a.RoleName == role);
                 var user = dbConnect.Users.FirstOrDefault(u => u.Username == username);
                 if (user == null)
                 {
 
-                    User u = new User();
+                    Users u = new Users();
                     u.Name = name;
                     u.Username = username;
                     u.Password = password;
