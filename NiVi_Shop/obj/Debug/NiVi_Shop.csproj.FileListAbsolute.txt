@@ -241,3 +241,11 @@ B:\SaleWeb\NiVi_Shop\bin\System.Text.Encodings.Web.dll
 B:\SaleWeb\NiVi_Shop\bin\CloudinaryDotNet.xml
 B:\SaleWeb\NiVi_Shop\bin\Newtonsoft.Json.xml
 B:\SaleWeb\NiVi_Shop\bin\System.Text.Encodings.Web.xml
+B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.AssemblyReference.cache
+B:\SaleWeb\NiVi_Shop\bin\BCrypt.Net-Next.dll
+B:\SaleWeb\NiVi_Shop\bin\BCrypt.Net-Next.xml
+B:\SaleWeb\NiVi_Shop\bin\hbehr.recaptcha.dll
+B:\SaleWeb\NiVi_Shop\bin\Recaptcha.dll
+B:\SaleWeb\NiVi_Shop\bin\Recaptcha.pdb
+B:\SaleWeb\NiVi_Shop\bin\PayPal.dll
+B:\SaleWeb\NiVi_Shop\bin\PayPal.xml

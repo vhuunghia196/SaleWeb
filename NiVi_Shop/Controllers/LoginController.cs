@@ -34,6 +34,7 @@ namespace NiVi_Shop.Controllers
                         FormsAuthentication.SetAuthCookie(i.Username, true);
                         Session["Name"] = i.Name;
                         Session["UserID"] = i.UserID;
+                        Session["RoleID"] = i.RoleID;
                         return RedirectToAction("Index", "TrangChu");
                     }
                     else

@@ -10,7 +10,7 @@ namespace NiVi_Shop.Models
     public partial class OrderDetail
     {
         [Key]
-        public int DayOfCreate { get; set; }
+        public int OrderDetailId { get; set; }
 
         public int OrderID { get; set; }
 
