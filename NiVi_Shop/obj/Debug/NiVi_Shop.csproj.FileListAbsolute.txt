@@ -176,3 +176,10 @@ E:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CoreCompileInputs.cache
 E:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CopyComplete
 E:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.dll
 E:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.pdb
+E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\bin\BCrypt.Net-Next.dll
+E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\bin\hbehr.recaptcha.dll
+E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\bin\PayPal.dll
+E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\bin\Recaptcha.dll
+E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\bin\BCrypt.Net-Next.xml
+E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\bin\PayPal.xml
+E:\HK8\LTCSDL\BTL\SaleWeb\NiVi_Shop\bin\Recaptcha.pdb
