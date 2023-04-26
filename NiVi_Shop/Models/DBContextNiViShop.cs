@@ -8,7 +8,7 @@ namespace NiVi_Shop.Models
     public partial class DBContextNiViShop : DbContext
     {
         public DBContextNiViShop()
-            : base("name=Model13")
+            : base("name=DBContextNiViShop11")
         {
         }
 

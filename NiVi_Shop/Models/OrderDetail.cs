@@ -9,7 +9,6 @@ namespace NiVi_Shop.Models
     [Table("OrderDetail")]
     public partial class OrderDetail
     {
-        [Key]
         public int OrderDetailId { get; set; }
 
         public int OrderID { get; set; }

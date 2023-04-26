@@ -1,0 +1,94 @@
+﻿@model NiVi_Shop.Models.Products
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section naviheader {
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/product" class="nav-link">Product</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Edit product</a>
+        </li>
+    </ul>
+}
+<div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-6">
+            @if (Model != null)
+            {
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">ADD PRODUCT</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    @using (Html.BeginForm("Add", "Products", FormMethod.Post, new { Action = "/admin/product/edit/" + Model.ProductID }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(x => x.ProductID)
+                        <div class="card-body">
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Name</label>
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name" })
+                                @Html.ValidationMessageFor(m => m.Name, "Please enter product name.")
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Price</label>
+                                @Html.TextBoxFor(m => m.Price, new { @class = "form-control", @placeholder = "Price", @type = "number" })
+                                @Html.ValidationMessageFor(m => m.Price, "Please enter product price.")
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Quantity</label>
+                                @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control", @placeholder = "Quantity", @type = "number" })
+                                @Html.ValidationMessageFor(m => m.Quantity, "Please enter product quantity.")
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Detail</label>
+                                @Html.TextAreaFor(m => m.Detail, new { @id = "myTextarea", @class = "form-control", @name = "myTextarea", @rows = "5", @cols = "50" })
+                                @Html.ValidationMessageFor(m => m.Detail, "Please enter product detail.", new { })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelectRounded0">Supplier</label>
+                                <input type="text" value="@Model.Supplier.Name" disabled="disabled"/>
+                                @Html.DropDownListFor(m => m.SupplierID, ViewBag.Supplier as SelectList, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelectRounded0">Category</label>
+                                <input type="text" value="@Model.Categories.CategoryName" disabled="disabled"/>
+                                @Html.DropDownListFor(m => m.CategoryID, ViewBag.Category as SelectList, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFile">Image</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        @Html.TextBoxFor(m => m.Image, new { })
+                                        @Html.ValidationMessageFor(m => m.Image, "Please enter product image.", new { })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <a class="btn btn-danger" href="/admin/product">Back</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    }
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

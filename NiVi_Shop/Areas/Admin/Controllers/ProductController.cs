@@ -42,7 +42,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
                 ShowModelView = viewModel1,
                 Products = viewModel2
             };
-            
+
             return View(combinedModelView);
         }
 
@@ -66,6 +66,58 @@ namespace NiVi_Shop.Areas.Admin.Controllers
                 Categories = categories
             };
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Remove(int id)
+        {
+            try
+            {
+                var item = dbConnect.Products.Find(id);
+                if (item != null)
+                {
+                    dbConnect.Products.Remove(item);
+                    dbConnect.SaveChanges();
+                    return Json(new { success = true });
+                }
+                return Json(new { success = false });
+            }
+            catch (Exception ex)
+            {
+                // Handle exception here
+                return Json(new { success = false, error = ex.Message });
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var item = dbConnect.Products.Find(id);
+            ViewBag.Supplier = new SelectList(dbConnect.Suppliers.ToList(), "SupplierID", "Name");
+            ViewBag.Category = new SelectList(dbConnect.Categories.ToList(), "CategoryID", "CategoryName");
+            return View(item);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Product p)
+        {
+    
+            try
+            {
+                if (p != null)
+                {
+                    dbConnect.Products.Attach(p);
+                    dbConnect.Entry(p).State = System.Data.Entity.EntityState.Modified;
+                    dbConnect.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(p);
+            }
+            catch (Exception ex)
+            {
+                // Handle exception here
+                return Json(new { success = false, error = ex.Message });
+            }
         }
     }
 }
