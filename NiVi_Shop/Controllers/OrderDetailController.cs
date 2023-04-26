@@ -23,11 +23,11 @@ namespace NiVi_Shop.Controllers
                                     .Select(o => o.OrderID)
                                     .ToList();
                     // list chi tiết order theo userid
-                    var orderDetails = db.OrderDetail
+                    var orderDetails = db.OrderDetails
                                     .Where(od => orderID.Contains(od.OrderID))
                                     .ToList();
                     // list sản phẩm theo orderid
-                    var productIds = db.OrderDetail
+                    var productIds = db.OrderDetails
                                     .Where(od => orderID.Contains(od.OrderID))
                                     .Select(od => od.ProductID)
                                     .ToList();

@@ -2,15 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\NiVi_Shop",
-    "\\NiVi_Shop\\Publics",
-    "\\NiVi_Shop\\Publics\\css",
-    "\\NiVi_Shop\\Publics\\js",
+    "\\NiVi_Shop\\App_Start",
     "\\NiVi_Shop\\Views",
-    "\\NiVi_Shop\\Views\\PLANT",
-    "\\NiVi_Shop\\Views\\Shared",
-    "\\NiVi_Shop\\Views\\SHOP",
     "\\NiVi_Shop\\Views\\TrangChu"
   ],
-  "SelectedNode": "\\NiVi_Shop\\Views\\TrangChu\\Index.cshtml",
+  "SelectedNode": "\\NiVi_Shop.sln",
   "PreviewInSolutionExplorer": false
 }

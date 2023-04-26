@@ -1,4 +1,4 @@
-﻿@model List<NiVi_Shop.Models.Products>
+﻿@model List<NiVi_Shop.Models.Product>
 
 
 @{
@@ -9,11 +9,12 @@
 @section head {
     <script src="~/Publics/js/jquery-3.6.0.min.js"></script>
     <script src="~/Publics/js/javascript.js"></script>
-    <link href="~/Publics/css/Cart.css?v=2" rel="stylesheet" />
+    <link href="~/Publics/css/Cart.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://code.jquery.com/jquery-3.3.1.slim.min.js" />
     @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js" />*@
-    <link href="~/Publics/css/all.min.css" rel="stylesheet" />
+    <link href="~/Publics/css/all.min.css?v=2" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-siJTwz0+0fqvBlYrEfgjmX9x0gJDM28a0HfADyh2+TQq6bsNCl6UOkfM10/0/b+ZZD6wUsKjTYsNzJVKXBRXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 }
 
 <div class="px-4 px-lg-0 custom">
@@ -94,10 +95,42 @@
                     </div>
                     <div class="p-4">
                     </div>
-                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Instructions for seller</div>
-                    <div class="p-4">
-                        <p class="font-italic mb-4">If you have some information for the seller you can leave them in the box below</p>
-                        <textarea name="" cols="30" rows="2" class="form-control"></textarea>
+                    <div class="card px-4">
+                        <p class="h8 py-3">Payment Details</p>
+                        <div class="row gx-3">
+                            <div class="col-12">
+                                <div class="d-flex flex-column">
+                                    <p class="text mb-1">Person Name</p>
+                                    <input class="form-control mb-3" type="text" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex flex-column">
+                                    <p class="text mb-1">Card Number</p>
+                                    <input class="form-control mb-3" type="text" placeholder="1234 5678 435678">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex flex-column">
+                                    <p class="text mb-1">Expiry</p>
+                                    <input class="form-control mb-3" type="text" placeholder="MM/YYYY">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex flex-column">
+                                    <p class="text mb-1">CVV/CVC</p>
+                                    <input class="form-control mb-3 pt-2 " type="password" placeholder="***">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <a href="#">
+                                    <div class="btn btn-primary mb-3">
+                                        <span class="ps-3">Pay with another bank $@ViewBag.TotalPrice</span>
+                                        <span class="fas fa-arrow-right"></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -110,7 +143,29 @@
                                 <strong class="text-muted">Total</strong>
                                 <h5 class="font-weight-bold">$@ViewBag.TotalPrice</h5>
                             </li>
-                        </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+                        </ul>
+                    </div>
+                    <div class="col-12">
+                        @if (@Session["userID"]!= null)
+                        {
+                            <a href="@Url.Action("PaymentWithPaypal", "TrangChu")">
+                                <div class="btn btn-primary mb-3">
+                                    <i class="fab fa-cc-paypal" style="font-size: 46px; color: white"></i>
+                                    <span class="ps-3">Pay with PAYPAL $@ViewBag.TotalPrice</span>
+                                    <span class="fas fa-arrow-right"></span>
+                                </div>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Login", "Login")">
+                                <div class="btn btn-primary mb-3">
+                                    <i class="fab fa-cc-paypal" style="font-size: 46px; color: white"></i>
+                                    <span class="ps-3">Please log in to continue</span>
+                                    <span class="fas fa-arrow-right"></span>
+                                </div>
+                            </a>
+                        }
                     </div>
                 </div>
             </div>

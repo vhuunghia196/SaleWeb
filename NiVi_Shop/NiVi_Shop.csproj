@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net35\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
     <Reference Include="CloudinaryDotNet, Version=1.20.0.0, Culture=neutral, PublicKeyToken=c8234dc617ae7841, processorArchitecture=MSIL">
       <HintPath>..\packages\CloudinaryDotNet.1.20.0\lib\net452\CloudinaryDotNet.dll</HintPath>
     </Reference>
@@ -52,6 +55,9 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="hbehr.recaptcha, Version=1.9.0.36338, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReCaptcha-AspNet.1.9.0\lib\net46\hbehr.recaptcha.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -62,6 +68,12 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
+    <Reference Include="Recaptcha, Version=1.0.5.0, Culture=neutral, PublicKeyToken=9afc4d65b28c38c2, processorArchitecture=MSIL">
+      <HintPath>..\packages\recaptcha.1.0.5.0\lib\.NetFramework 4.0\Recaptcha.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
@@ -2069,6 +2081,7 @@
     <Content Include="Publics\css\Login.css" />
     <Content Include="Publics\css\main.css" />
     <Content Include="Publics\css\OrderDetail.css" />
+    <Content Include="Publics\css\Register.css" />
     <Content Include="Publics\css\responsive.css" />
     <Content Include="Publics\css\SHOP.css" />
     <Content Include="Publics\image\1.jpg" />
@@ -2128,6 +2141,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrderDetailController.cs" />
     <Compile Include="Controllers\PLANTController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SHOPController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2138,16 +2152,18 @@
       <DependentUpon>202304210326519_DataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Categories.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\DBContextNiViShop.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
-    <Compile Include="Models\Orders.cs" />
-    <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\PaypalConfiguration.cs" />
+    <Compile Include="Models\PaypalLogger.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Supplier.cs" />
-    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2421,6 +2437,9 @@
     <Content Include="Views\TrangChu\Cart.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\OrderDetail\Index.cshtml" />
+    <Content Include="Views\Register\Register.cshtml" />
+    <Content Include="Views\TrangChu\Success.cshtml" />
+    <Content Include="Views\TrangChu\Failure.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
