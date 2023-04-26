@@ -189,6 +189,39 @@ $(document).ready(function () {
             }
         });
     });
-
+    $('#password, #confirmPassword').on('keyup', function () {
+        if ($('#password').val() == $('#confirmPassword').val()) {
+            $('#passwordMatch').html('Matching').css('color', 'green');
+            $('#registerBtn').prop('disabled', false);
+        } else {
+            $('#passwordMatch').html('Not Matching').css('color', 'red');
+            $('#registerBtn').prop('disabled', true);
+        }
+    });
+    $('#phoneNumber').on('input', function () {
+        var input = $(this);
+        var phoneNumber = input.val();
+        if (/^0[0-9]{9}$/.test(phoneNumber)) {
+            input.removeClass("is-invalid").addClass("is-valid");
+            $('#phoneNumberError').text("");
+            $('#registerBtn').prop('disabled', false);
+        } else {
+            input.removeClass("is-valid").addClass("is-invalid");
+            $('#phoneNumberError').text("Please enter a 10-digit phone number starting with 0");
+            $('#registerBtn').prop('disabled', true);
+        }
+    });
+    $('form').submit(function (event) {
+        var verified = grecaptcha.getResponse();
+        if (verified.length === 0) {
+            event.preventDefault();
+            alert('Please verify that you are not a robot.');
+        } else {
+            $('button[type="submit"]').prop('disabled', true);
+        }
+    });
+    $('#g-recaptcha-response').change(function () {
+        $('button[type="submit"]').prop('disabled', false);
+    });
     new WOW().init();
 });

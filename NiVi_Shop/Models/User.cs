@@ -6,16 +6,15 @@ namespace NiVi_Shop.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Users
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public User()
         {
-            Comment = new HashSet<Comment>();
-            Orders = new HashSet<Orders>();
+            Comments = new HashSet<Comment>();
+            Orders = new HashSet<Order>();
         }
 
-        [Key]
         public int UserID { get; set; }
 
         [Required]
@@ -39,10 +38,10 @@ namespace NiVi_Shop.Models
         public int RoleID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comment> Comment { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
         public virtual Role Role { get; set; }
     }

@@ -1,4 +1,4 @@
-﻿@model NiVi_Shop.Models.Users
+﻿@model NiVi_Shop.Models.User
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout1.cshtml";
@@ -33,7 +33,8 @@
             </div>
         </div>
         <button type="submit" class="btn btn-block text-center my-3">Log in</button>
-        <div class="text-center pt-3 text-muted">Not a member? <a href="#">Sign up</a></div>
+        <div class="text-center pt-3 text-muted">Not a member? <a href="@Url.Action("Register","Register")">Sign up</a></div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     }
 </div>
 

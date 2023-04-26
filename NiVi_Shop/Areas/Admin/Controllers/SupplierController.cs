@@ -14,7 +14,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         public ActionResult Index()
         {
             //ViewBag.Supplier = new SelectList(dbConnect.Supplier.ToList());
-            var supplier = dbConnect.Supplier.ToList();
+            var supplier = dbConnect.Suppliers.ToList();
             return View(supplier);
         }
 
@@ -25,7 +25,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         {
             try
             {
-                foreach (Supplier i in dbConnect.Supplier)
+                foreach (Supplier i in dbConnect.Suppliers)
                 {
                     if (i.Name == name && i.PhoneNumber == phone && i.Address == address && i.CompanyName == company)
                         return Json(new { success = false });
@@ -37,7 +37,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
                 s.CompanyName = company;
                 if (s != null)
                 {
-                    dbConnect.Supplier.Add(s);
+                    dbConnect.Suppliers.Add(s);
                     dbConnect.SaveChanges();
                     return Json(new { success = true });
                 }
@@ -55,10 +55,10 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         {
             try
             {
-                var item = dbConnect.Supplier.Find(id);
+                var item = dbConnect.Suppliers.Find(id);
                 if (item != null)
                 {
-                    dbConnect.Supplier.Remove(item);
+                    dbConnect.Suppliers.Remove(item);
                     dbConnect.SaveChanges();
                     return Json(new { success = true });
                 }
@@ -77,7 +77,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
             try
             {
                 String a = name;
-                var s = dbConnect.Supplier.Find(id);
+                var s = dbConnect.Suppliers.Find(id);
                 if (s != null)
                 {
                     s.Name = name;

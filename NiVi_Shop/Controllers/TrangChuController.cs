@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Net;
 using System.Web.Security;
+using PayPal.Api;
 
 namespace NiVi_Shop.Controllers
 {
@@ -39,7 +40,7 @@ namespace NiVi_Shop.Controllers
         public ActionResult Cart()
         {
             var db = new DBContextNiViShop();
-            var cart = (List<Products>)Session["Cart"];
+            var cart = (List<Product>)Session["Cart"];
             var category_name = db.Categories.ToList();
             ViewBag.CategoryName = category_name;
 
@@ -74,11 +75,11 @@ namespace NiVi_Shop.Controllers
                 // Nếu Session["Cart"] chưa tồn tại, tạo một List để lưu trữ các sản phẩm.
                 if (Session["Cart"] == null)
                 {
-                    Session["Cart"] = new List<Products>();
+                    Session["Cart"] = new List<Product>();
                 }
 
                 // Lấy List đã lưu từ Session.
-                var cart = (List<Products>)Session["Cart"];
+                var cart = (List<Product>)Session["Cart"];
 
                 // Kiểm tra sản phẩm đã tồn tại trong giỏ hàng hay chưa.
                 var existingProduct = cart.FirstOrDefault(p => p.ProductID == id);
@@ -113,7 +114,7 @@ namespace NiVi_Shop.Controllers
         public ActionResult RemoveFromCart(int id)
         {
             // Lấy List đã lưu từ Session.
-            var cart = (List<Products>)Session["Cart"];
+            var cart = (List<Product>)Session["Cart"];
 
             // Tìm kiếm sản phẩm trong giỏ hàng.
             var product = cart.FirstOrDefault(p => p.ProductID == id);
@@ -135,7 +136,150 @@ namespace NiVi_Shop.Controllers
                 return Json(new { success = false });
             }
         }
-        
 
+        private Payment payment;
+        private Payment CreatePayment(APIContext apiContext, string redirectUrl)
+        {
+            var listItems = new ItemList()
+            {
+                items = new List<Item>()
+            };
+
+            List<Product> listCarts = (List<Product>)Session["Cart"];
+            foreach(var cart in listCarts)
+            {
+                listItems.items.Add(new Item()
+                {
+                    name = cart.Name,
+                    currency = "USD",
+                    price = cart.Price.ToString(),
+                    quantity = cart.Quantity.ToString(),
+                    sku = "sku"
+                });
+            }
+
+            var payer = new Payer(){ payment_method = "paypal"};
+
+            var redirUrls = new RedirectUrls()
+            {
+                cancel_url = redirectUrl,
+                return_url = redirectUrl
+            };
+
+
+            var details = new Details() 
+            { 
+                tax = "1",
+                shipping = "2",
+                subtotal = listCarts.Sum(x => x.Quantity * x.Price).ToString()
+            };
+
+            var amount = new Amount()
+            {
+                currency = "USD",
+                total = (Convert.ToDouble(details.tax) + Convert.ToDouble(details.shipping) + Convert.ToDouble(details.subtotal)).ToString(),
+                details = details
+            };
+
+            var transactionList = new List<Transaction>();
+            transactionList.Add(new Transaction()
+            {
+                description = "Nghia testing transaction decription",
+                invoice_number = Convert.ToString((new Random()).Next(100000)),
+                amount = amount,
+                item_list = listItems
+            });
+
+            payment = new Payment()
+            {
+                intent = "sale",
+                payer = payer,
+                transactions = transactionList,
+                redirect_urls = redirUrls
+            };
+
+            return payment.Create(apiContext);
+        }
+        
+        private Payment ExecutePayment(APIContext aPIContext, string payerId, string paymentId)
+        {
+            var paymentExecution = new PaymentExecution()
+            {
+                payer_id = payerId
+            };
+            payment = new Payment() { id = paymentId};
+            return payment.Execute(aPIContext, paymentExecution);
+        }
+
+        public ActionResult PaymentWithPaypal()
+        {
+            APIContext apiContext = PaypalConfiguration.GetAPIContext();
+            try
+            {
+                string payerId = Request.Params["PayerID"];
+                if (string.IsNullOrEmpty(payerId))
+                {
+                    string baseURI = Request.Url.Scheme + "://" + Request.Url.Authority + "/TrangChu/PaymentWithPaypal?";
+                    var guid = Convert.ToString((new Random()).Next(100000));
+                    var createdPayment = CreatePayment(apiContext, baseURI + "guid="+guid);
+                    var links = createdPayment.links.GetEnumerator();
+                    string paypalRedirectUrl = string.Empty;
+                    while (links.MoveNext())
+                    {
+                        Links link = links.Current;
+                        if (link.rel.ToLower().Trim().Equals("approval_url"))
+                        {
+                            paypalRedirectUrl = link.href;
+                        }
+                    }
+                    Session.Add(guid, createdPayment.id);
+                    return Redirect(paypalRedirectUrl);
+                }
+                else
+                {
+                    var guid = Request.Params["guid"];
+                    var executedPayment = ExecutePayment(apiContext, payerId, Session[guid] as string);
+                    if (executedPayment.state.ToLower() != "approved")
+                    {
+                        return View("Failure");
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                PaypalLogger.Log("Error: " + ex.Message);
+                return View("Failure");
+            }
+            var cart = (List<Product>)Session["Cart"];
+            using (var context = new DBContextNiViShop())
+            {
+                var order = new Models.Order
+                {
+                    UserID = (int)Session["userID"],
+                    OrderDate = DateTime.Now
+                };
+                context.Orders.Add(order);
+                context.SaveChanges();
+                int latestOrderId = context.Orders.Max(o => o.OrderID);
+
+                foreach (var product in cart)
+                {
+                    var orderDetail = new Models.OrderDetail
+                    {
+                        OrderID = latestOrderId,
+                        ProductID = product.ProductID,
+                        Price = product.Price,
+                        Quantity = product.Quantity,
+                        Status = 1 // Hoặc trạng thái mặc định khác tùy theo yêu cầu của bạn
+                    };
+
+                    context.OrderDetails.Add(orderDetail);
+                }
+
+                context.SaveChanges();
+            }
+            Session.Remove("Cart");
+            return View("Success");
+        }
     }
 }

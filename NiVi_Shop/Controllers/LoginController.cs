@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using BCrypt.Net;
 
 namespace NiVi_Shop.Controllers
 {
@@ -17,9 +18,9 @@ namespace NiVi_Shop.Controllers
             
             return View();
         }
-
-        [HttpPost]
-        public ActionResult Login(Users user)
+        // hàm login không băm mật khẩu
+        /*[HttpPost]
+        public ActionResult Login(User user)
         {
             if (user!=null)
             {
@@ -29,6 +30,7 @@ namespace NiVi_Shop.Controllers
                 string trimmedUsername = user.Username.Trim();
                 foreach (var i in userList)
                 {
+
                     if (trimmedUsername == i.Username && user.Password == i.Password)
                     {
                         FormsAuthentication.SetAuthCookie(i.Username, true);
@@ -44,6 +46,56 @@ namespace NiVi_Shop.Controllers
                 }
             }
             
+            return View(user);
+        }*/
+
+
+
+        // hàm login băm mật khẩu
+        [HttpPost]
+        public ActionResult Login(User user)
+        {
+            if (user != null)
+            {
+                // Kiểm tra tên đăng nhập và mật khẩu có đúng không
+                var db = new DBContextNiViShop();
+                var userList = db.Users.ToList();
+                string trimmedUsername = user.Username.Trim();
+                string hashedPassword = "";
+                foreach (var i in userList)
+                {
+                    if (trimmedUsername == i.Username)
+                    {
+                        hashedPassword = i.Password;
+                        break;
+                    }
+                }
+                try
+                {
+                    if (BCrypt.Net.BCrypt.Verify(user.Password.Trim(), hashedPassword))
+                    {
+                        FormsAuthentication.SetAuthCookie(trimmedUsername, true);
+                        var currentUser = db.Users.FirstOrDefault(u => u.Username == trimmedUsername);
+                        if (currentUser != null)
+                        {
+                            Session["Name"] = currentUser.Name;
+                            Session["UserID"] = currentUser.UserID;
+                            Session["RoleID"] = currentUser.RoleID;
+                        }
+                        return RedirectToAction("Index", "TrangChu");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng");
+                    }
+                }
+                catch (BCrypt.Net.SaltParseException ex)
+                {
+                    ModelState.AddModelError("", "Lỗi xác thực mật khẩu: " + ex.Message);
+                }
+
+            }
+
             return View(user);
         }
         public ActionResult Logout()

@@ -22,13 +22,13 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         public class CombinedModelView
         {
             public ShowModelView ShowModelView { get; set; }
-            public Products Products { get; set; }
+            public Product Products { get; set; }
         }
 
         public ActionResult Add()
         {
             var products = dbConnect.Products.ToList();
-            var suppliers = dbConnect.Supplier.ToList();
+            var suppliers = dbConnect.Suppliers.ToList();
             var categories = dbConnect.Categories.ToList();
             var viewModel1 = new ShowModelView
             {
@@ -36,7 +36,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
                 Supplier = suppliers,
                 Categories = categories
             };
-            var viewModel2 = new Products();
+            var viewModel2 = new Product();
             var combinedModelView = new CombinedModelView
             {
                 ShowModelView = viewModel1,
@@ -57,7 +57,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             var products = dbConnect.Products.ToList();
-            var suppliers = dbConnect.Supplier.ToList();
+            var suppliers = dbConnect.Suppliers.ToList();
             var categories = dbConnect.Categories.ToList();
             model.ShowModelView = new ShowModelView
             {
@@ -93,13 +93,13 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             var item = dbConnect.Products.Find(id);
-            ViewBag.Supplier = new SelectList(dbConnect.Supplier.ToList(), "SupplierID", "Name");
+            ViewBag.Supplier = new SelectList(dbConnect.Suppliers.ToList(), "SupplierID", "Name");
             ViewBag.Category = new SelectList(dbConnect.Categories.ToList(), "CategoryID", "CategoryName");
             return View(item);
         }
 
         [HttpPost]
-        public ActionResult Edit(Products p)
+        public ActionResult Edit(Product p)
         {
     
             try
