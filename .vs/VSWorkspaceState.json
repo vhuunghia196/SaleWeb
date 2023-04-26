@@ -3,9 +3,10 @@
     "",
     "\\NiVi_Shop",
     "\\NiVi_Shop\\App_Start",
+    "\\NiVi_Shop\\Controllers",
     "\\NiVi_Shop\\Views",
     "\\NiVi_Shop\\Views\\TrangChu"
   ],
-  "SelectedNode": "\\NiVi_Shop.sln",
+  "SelectedNode": "\\NiVi_Shop\\NiVi_Shop.csproj",
   "PreviewInSolutionExplorer": false
 }

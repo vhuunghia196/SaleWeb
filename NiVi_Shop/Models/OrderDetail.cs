@@ -19,8 +19,6 @@ namespace NiVi_Shop.Models
 
         public int? Quantity { get; set; }
 
-        public int? Status { get; set; }
-
         public virtual Order Order { get; set; }
 
         public virtual Product Product { get; set; }

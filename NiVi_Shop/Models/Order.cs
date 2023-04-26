@@ -20,6 +20,8 @@ namespace NiVi_Shop.Models
 
         public DateTime OrderDate { get; set; }
 
+        public int? isPaid { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 

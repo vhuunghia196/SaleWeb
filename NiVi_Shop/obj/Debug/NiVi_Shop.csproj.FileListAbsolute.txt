@@ -93,3 +93,4 @@ B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CoreCompileInputs.cache
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CopyComplete
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.dll
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.pdb
+B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.AssemblyReference.cache
