@@ -2130,6 +2130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\StatisticsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SupplierController.cs" />
@@ -2409,6 +2410,8 @@
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Forbidden\index.cshtml" />
     <Content Include="Areas\Admin\Views\Statistics\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistics\Revenue.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\TrangChu\Index.cshtml" />

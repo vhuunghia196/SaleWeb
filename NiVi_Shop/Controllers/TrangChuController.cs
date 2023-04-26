@@ -270,7 +270,6 @@ namespace NiVi_Shop.Controllers
                         ProductID = product.ProductID,
                         Price = product.Price,
                         Quantity = product.Quantity,
-                        Status = 1 // Hoặc trạng thái mặc định khác tùy theo yêu cầu của bạn
                     };
 
                     context.OrderDetails.Add(orderDetail);
