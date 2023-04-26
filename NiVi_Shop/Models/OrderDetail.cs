@@ -9,8 +9,7 @@ namespace NiVi_Shop.Models
     [Table("OrderDetail")]
     public partial class OrderDetail
     {
-        [Key]
-        public int DayOfCreate { get; set; }
+        public int OrderDetailId { get; set; }
 
         public int OrderID { get; set; }
 
@@ -19,8 +18,6 @@ namespace NiVi_Shop.Models
         public double Price { get; set; }
 
         public int? Quantity { get; set; }
-
-        public int? Status { get; set; }
 
         public virtual Orders Orders { get; set; }
 
