@@ -10,7 +10,7 @@ namespace NiVi_Shop.Areas.Admin.Data
     {
         public List<Product> Products { get; set; }
         public List<Supplier> Supplier { get; set; }
-        public List<Category> Categories { get; set; }
+        public List<Categories> Categories { get; set; }
         public List<Comment> Comment { get; set; }
         public List<OrderDetail> OrderDetail { get; set; }
         public List<Order> Orders { get; set; }

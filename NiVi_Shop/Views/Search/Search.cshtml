@@ -1,0 +1,54 @@
+﻿@model List<NiVi_Shop.Models.Product>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+@section head {
+    <script src="~/Publics/js/jquery-3.6.0.min.js"></script>
+    <script src="~/Publics/js/javascript.js"></script>
+    @*<link href="~/Publics/css/responsive.css" rel="stylesheet" />*@
+    @*<link href="~/Publics/css/main.css" rel="stylesheet" />*@
+    @*<link href="~/Publics/css/SHOP.css" rel="stylesheet" />*@
+    <link href="~/Publics/css/all.min.css" rel="stylesheet" />
+}
+
+
+<div class="container-6 wow">
+    <div class="container-6-top">
+        <div style="width: 100%; max-width: 350px;margin-left: auto; margin-right:auto; text-align: center;" class="container-6-top-inner">
+            <h2>Great deals for great prices</h2>
+        </div>
+    </div>
+    <div class="container-6-bottom">
+        @using (Html.BeginForm("Search", "Search", FormMethod.Post))
+        {
+            <input type="text" name="searchKeyword" class="search-product" />
+            <button type="submit" class="button-search"><i class="fas fa-search" style=" font-size: 40px;"></i></button>
+        }
+        <div class="container-6-bottom-inner">
+            <div class="container-6-bottom-inner-1">
+                @foreach (var product in Model)
+                {
+                    <div class="container-6-bottom-all">
+                        <a href="@Url.Action("ProductDetails", "TrangChu", new { id = product.ProductID })">
+                            <div>
+                                <img src="@product.Image" />
+                            </div>
+                        </a>
+                        <div>
+                            <h2>@product.Name</h2>
+                        </div>
+                        <span>$ <bdi>@product.Price</bdi></span>
+                        <a class="shop" data-id="@product.ProductID">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -34,7 +34,7 @@ namespace NiVi_Shop.Models
 
         public int CategoryID { get; set; }
 
-        public virtual Category Category { get; set; }
+        public virtual Categories Categories { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
