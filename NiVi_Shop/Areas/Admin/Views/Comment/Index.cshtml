@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NiVi_Shop.Models.Orders>
+﻿@model IEnumerable<NiVi_Shop.Models.Comment>
 @{
     ViewBag.Title = "Đơn đặt";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -23,7 +23,7 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a class="nav-link active" href="#Decor" id="view-tab" data-toggle="tab">View</a></li>
             @*<li class="nav-item"><a class="nav-link" href="#Chair" id="add-tab" data-toggle="tab">ADD</a></li>
-            <li class="nav-item"><a class="nav-link" href="#Update" id="update-tab" data-toggle="tab" style="pointer-events:none">UPDATE</a></li>*@
+                <li class="nav-item"><a class="nav-link" href="#Update" id="update-tab" data-toggle="tab" style="pointer-events:none">UPDATE</a></li>*@
         </ul>
     </div><!-- /.card-header -->
     <div class="card-body">
@@ -39,11 +39,10 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
+                                        <th>Content</th>
+                                        <th>Product</th>
                                         <th>User</th>
-                                        <th>Order date</th>
-                                        <th width="20%">Phone number</th>
-                                        <th>Address</th>
-                                        <th>Company</th>
+                                        <th>Day</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,12 +50,11 @@
                                     {
                                         foreach (var item in Model)
                                         {
-                                            <tr id="@item.SupplierID">
-                                                <td>@item.SupplierID</td>
-                                                <td class="name-supplier">@item.Name</td>
-                                                <td class="phone-supplier">@item.PhoneNumber</td>
-                                                <td class="address-supplier">@item.Address</td>
-                                                <td class="company-supplier">@item.CompanyName</td>
+                                            <tr id="@item.IDComment">
+                                                <td>@item.IDComment</td>
+                                                <td class="product-comment">@item.Product.Name</td>
+                                                <td class="user-comment">@item.User.Name</td>
+                                                <td class="day-comment">@item.DayComment</td>
                                                 <td>
                                                     <button class="btn btn-danger remove-supplier">Remove</button>
                                                     <button class="btn btn-primary update-supplier">Update</button>
@@ -67,7 +65,7 @@
                                     else
                                     {
                                         <tr>
-                                            <td colspan="8">No supplier</td>
+                                            <td colspan="8">No Comment</td>
                                         </tr>
                                     }
                                 </tbody>

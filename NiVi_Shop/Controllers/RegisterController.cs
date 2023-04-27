@@ -21,7 +21,7 @@ namespace NiVi_Shop.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(User user, string gRecaptchaResponse)
+        public ActionResult Register(Users user, string gRecaptchaResponse)
         {
             if (user != null)
             {

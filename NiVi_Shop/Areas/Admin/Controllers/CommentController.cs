@@ -7,15 +7,14 @@ using System.Web.Mvc;
 
 namespace NiVi_Shop.Areas.Admin.Controllers
 {
-    public class OrderController : Controller
+    public class CommentController : Controller
     {
         DBContextNiViShop dbConnext = new DBContextNiViShop();
-        // GET: Admin/Order
+        // GET: Admin/Comment
         public ActionResult Index()
         {
-            var item = dbConnext.Orders.ToList();
-            ViewBag.Orderdetail = new SelectList(dbConnext.OrderDetail.ToList(), "OrderID", "ProductID");
-            return View(item);
+            var comment = dbConnext.Comment.ToList();
+            return View(comment);
         }
     }
 }
