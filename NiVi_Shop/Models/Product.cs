@@ -14,7 +14,7 @@ namespace NiVi_Shop.Models
             Comments = new HashSet<Comment>();
             OrderDetails = new HashSet<OrderDetail>();
         }
-
+        [Key]
         public int ProductID { get; set; }
 
         [Required]

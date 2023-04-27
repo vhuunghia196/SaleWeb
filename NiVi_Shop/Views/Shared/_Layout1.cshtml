@@ -48,6 +48,11 @@
                 {
                     string userName = "";
                     userName = Session["Name"].ToString();
+
+                    if (Session["Name"] != null && (int)Session["RoleID"] == 1)
+                    {
+                        <a href="/admin/home" >ADMIN</a>
+                    }
                     <a class="username">@userName</a>
                     <a href="@Url.Action("Logout", "Login")">LOG OUT</a>
                 }

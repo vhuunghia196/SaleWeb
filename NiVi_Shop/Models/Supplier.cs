@@ -14,7 +14,7 @@ namespace NiVi_Shop.Models
         {
             Products = new HashSet<Product>();
         }
-
+        [Key]
         public int SupplierID { get; set; }
 
         [Required]

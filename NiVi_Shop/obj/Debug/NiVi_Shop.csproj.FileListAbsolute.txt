@@ -51,6 +51,7 @@ B:\SaleWeb\NiVi_Shop\bin\roslyn\vbc.rsp
 B:\SaleWeb\NiVi_Shop\bin\roslyn\VBCSCompiler.exe
 B:\SaleWeb\NiVi_Shop\bin\roslyn\VBCSCompiler.exe.config
 B:\SaleWeb\NiVi_Shop\bin\BCrypt.Net-Next.dll
+B:\SaleWeb\NiVi_Shop\bin\Cloudinary.dll
 B:\SaleWeb\NiVi_Shop\bin\CloudinaryDotNet.dll
 B:\SaleWeb\NiVi_Shop\bin\EntityFramework.dll
 B:\SaleWeb\NiVi_Shop\bin\EntityFramework.SqlServer.dll
@@ -94,4 +95,3 @@ B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.CopyComplete
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.dll
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.pdb
 B:\SaleWeb\NiVi_Shop\obj\Debug\NiVi_Shop.csproj.AssemblyReference.cache
-B:\SaleWeb\NiVi_Shop\bin\Cloudinary.dll

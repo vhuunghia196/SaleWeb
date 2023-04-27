@@ -12,9 +12,9 @@ namespace NiVi_Shop.Models
         public User()
         {
             Comments = new HashSet<Comment>();
-            Orders = new HashSet<Order>();
+            Orders = new HashSet<Orders>();
         }
-
+        [Key]
         public int UserID { get; set; }
 
         [Required]
@@ -41,7 +41,7 @@ namespace NiVi_Shop.Models
         public virtual ICollection<Comment> Comments { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
 
         public virtual Role Role { get; set; }
     }

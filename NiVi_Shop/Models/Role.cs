@@ -14,7 +14,7 @@ namespace NiVi_Shop.Models
         {
             Users = new HashSet<User>();
         }
-
+        [Key]
         public int RoleID { get; set; }
 
         [Required]

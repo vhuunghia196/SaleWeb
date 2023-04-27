@@ -108,7 +108,7 @@ namespace NiVi_Shop.Controllers
         {
             var db = new DBContextNiViShop();
             var product = db.Products.FirstOrDefault(p => p.ProductID == id);
-            var comments = db.Comments.Include(c => c.User)
+            var comments = db.Comment.Include(c => c.User)
                            .Where(c => c.ProductId == id)
                            .ToList();
             if (product == null)
@@ -142,7 +142,7 @@ namespace NiVi_Shop.Controllers
                     DayComment = DateTime.Now,
                     ProductId = productId
                 };
-                db.Comments.Add(newComment);
+                db.Comment.Add(newComment);
                 db.SaveChanges();
             }
             return RedirectToAction("ProductDetails", "TrangChu", new { id = productId });
@@ -271,8 +271,11 @@ namespace NiVi_Shop.Controllers
                 items = new List<Item>()
             };
 
+
             List<Product> listCarts = (List<Product>)Session["Cart"];
             foreach (var cart in listCarts)
+
+
             {
                 listItems.items.Add(new Item()
                 {
@@ -379,7 +382,7 @@ namespace NiVi_Shop.Controllers
             var cart = (List<Product>)Session["Cart"];
             using (var context = new DBContextNiViShop())
             {
-                var order = new Models.Order
+                var order = new Models.Orders
                 {
                     UserID = (int)Session["userID"],
                     OrderDate = DateTime.Now,
@@ -397,7 +400,9 @@ namespace NiVi_Shop.Controllers
                         OrderID = latestOrderId,
                         ProductID = product.ProductID,
                         Price = product.Price,
+
                         Quantity = product.Quantity
+
                     };
 
                     context.OrderDetails.Add(orderDetail);
@@ -416,7 +421,7 @@ namespace NiVi_Shop.Controllers
             {
                 using (var context = new DBContextNiViShop())
                 {
-                    var order = new Models.Order
+                    var order = new Models.Orders
                     {
                         UserID = (int)Session["userID"],
                         OrderDate = DateTime.Now,

@@ -14,7 +14,7 @@
             <a href="/admin/home" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Product</a>
+            <a href="#" class="nav-link">Products</a>
         </li>
     </ul>
 }
@@ -128,7 +128,7 @@
                                         {
                                             if (@item.Categories.CategoryName == "Chair")
                                             {
-                                                <tr id="trow_@item.ProductID">
+                                                <tr id="@item.ProductID">
                                                     <td>@item.ProductID</td>
                                                     <td>@item.Name</td>
                                                     <td><img src="@item.Image" width="100px" alt="IMAGE" /></td>
@@ -191,7 +191,7 @@
                                         {
                                             if (@item.Categories.CategoryName == "Light")
                                             {
-                                                <tr id="trow_@item.ProductID">
+                                                <tr id="@item.ProductID">
                                                     <td>@item.ProductID</td>
                                                     <td>@item.Name</td>
                                                     <td><img src="@item.Image" width="100px" alt="IMAGE" /></td>
@@ -253,7 +253,7 @@
                                         {
                                             if (@item.Categories.CategoryName == "Plant")
                                             {
-                                                <tr id="trow_@item.ProductID">
+                                                <tr id="@item.ProductID">
                                                     <td>@item.ProductID</td>
                                                     <td>@item.Name</td>
                                                     <td><img src="@item.Image" width="100px" alt="IMAGE" /></td>
@@ -300,9 +300,8 @@
             $('body').on('click', '.remove-product', function () {
                 var tr = $(this).closest('tr');
                 var id = tr.attr('id');
-                var conf = confirm('Bạn chắc chắn xóa sản phẩm này không');
+                var conf = confirm('Remove this product ???');
                 if (conf === true) {
-                    // Gọi API xóa sản phẩm với id tương ứng
                     $.ajax({
                         url: '/admin/product/remove',
                         type: 'POST',

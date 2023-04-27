@@ -28,7 +28,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         public ActionResult Add()
         {
             var products = dbConnect.Products.ToList();
-            var suppliers = dbConnect.Suppliers.ToList();
+            var suppliers = dbConnect.Supplier.ToList();
             var categories = dbConnect.Categories.ToList();
             var viewModel1 = new ShowModelView
             {
@@ -57,7 +57,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             var products = dbConnect.Products.ToList();
-            var suppliers = dbConnect.Suppliers.ToList();
+            var suppliers = dbConnect.Supplier.ToList();
             var categories = dbConnect.Categories.ToList();
             model.ShowModelView = new ShowModelView
             {
@@ -93,7 +93,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             var item = dbConnect.Products.Find(id);
-            ViewBag.Supplier = new SelectList(dbConnect.Suppliers.ToList(), "SupplierID", "Name");
+            ViewBag.Supplier = new SelectList(dbConnect.Supplier.ToList(), "SupplierID", "Name");
             ViewBag.Category = new SelectList(dbConnect.Categories.ToList(), "CategoryID", "CategoryName");
             return View(item);
         }

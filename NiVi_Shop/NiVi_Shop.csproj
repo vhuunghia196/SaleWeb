@@ -2133,7 +2133,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\StatisticsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SupplierController.cs" />
@@ -2161,7 +2163,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\DBContextNiViShop.cs" />
-    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Orders.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\PaypalConfiguration.cs" />
     <Compile Include="Models\PaypalLogger.cs" />
@@ -2415,6 +2417,9 @@
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Forbidden\index.cshtml" />
     <Content Include="Areas\Admin\Views\Statistics\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistics\Revenue.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Comment\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\TrangChu\Index.cshtml" />

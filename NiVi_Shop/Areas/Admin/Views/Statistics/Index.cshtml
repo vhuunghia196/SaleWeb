@@ -1,7 +1,5 @@
-﻿
-@model IEnumerable<NiVi_Shop.Models.Supplier>
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Thống kê";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,32 +13,69 @@
             <a href="/admin/home" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Statistics</a>
+            <a href="#" class="nav-link">Statistics Quantity</a>
         </li>
     </ul>
 }
-<div>
+<h1>Statistics Quantity</h1>
+<div style="width:40%; margin:auto">
     <canvas id="myChart"></canvas>
 </div>
-<script>
-    const ctx = document.getElementById('myChart');
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+            url: '@Url.Action("getStatistics", "Statistics")',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                drawChartProductQuantity(data);
             }
+        });
+        })
+
+        function drawChartProductQuantity(data) {
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: [data[0].CategoryName, data[1].CategoryName, data[2].CategoryName, data[3].CategoryName],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [data[0].Quantity, data[1].Quantity, data[2].Quantity, data[2].Quantity],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(0, 206, 86, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(0, 206, 86, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Biểu đồ tròn'
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
         }
-    });
-</script>
+
+    </script>
+}

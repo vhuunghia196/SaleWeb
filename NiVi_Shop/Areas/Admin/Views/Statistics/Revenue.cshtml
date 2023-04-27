@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Thống kê doanh thu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section naviheader {
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Statistics Revenue</a>
+        </li>
+    </ul>
+}
+<h1>Statistics Revenue</h1>
+<div style="width:80%; margin:auto">
+    <canvas id="myChart"></canvas>
+</div>
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+            url: '@Url.Action("getStatistics", "Statistics")',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                drawChartProductRevenue(data);
+            }
+        });
+        })
+        function drawChartProductRevenue(data) {
+            const ctx = document.getElementById('myChart');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [data[0].CategoryName, data[1].CategoryName, data[2].CategoryName, data[3].CategoryName],
+                    datasets: [{
+                        label: 'Revenue',
+                        data: [data[0].Revenue, data[1].Revenue, data[2].Revenue, data[3].Revenue],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+    </script>
+}

@@ -6,14 +6,14 @@ namespace NiVi_Shop.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Order
+    public partial class Orders
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public Orders()
         {
             OrderDetails = new HashSet<OrderDetail>();
         }
-
+        [Key]
         public int OrderID { get; set; }
 
         public int UserID { get; set; }
