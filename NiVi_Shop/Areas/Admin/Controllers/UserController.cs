@@ -14,7 +14,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         // GET: Admin/User
         public ActionResult Index()
         {
-            ViewBag.Role = new SelectList(dbConnect.Role.ToList(), "RoleID", "RoleName");
+            ViewBag.Role = new SelectList(dbConnect.Roles.ToList(), "RoleID", "RoleName");
             var user = dbConnect.Users.ToList();
             return View(user);
         }
@@ -44,12 +44,12 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         {
             try
             {
-                var r = dbConnect.Role.FirstOrDefault(a => a.RoleName == role);
+                var r = dbConnect.Roles.FirstOrDefault(a => a.RoleName == role);
                 var user = dbConnect.Users.FirstOrDefault(u => u.Username == username);
                 if (user == null)
                 {
 
-                    Users u = new Users();
+                    User u = new User();
                     u.Name = name;
                     u.Username = username;
                     u.Password = password;

@@ -21,7 +21,7 @@ namespace NiVi_Shop.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(Users user, string gRecaptchaResponse)
+        public ActionResult Register(User user, string gRecaptchaResponse)
         {
             if (user != null)
             {
@@ -46,7 +46,7 @@ namespace NiVi_Shop.Controllers
                     if (ModelState.IsValid)
                     {
                         
-                        var user2 = new Users
+                        var user2 = new User
                         {
                             Username = user.Username.Trim(),
                             Password = BCrypt.Net.BCrypt.HashPassword(user.Password.Trim()),

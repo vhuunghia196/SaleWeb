@@ -11,7 +11,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="~/Publics/css/all.min.css?v=2" rel="stylesheet" />
-    <link href="~/Publics/css/main.css?v=2" rel="stylesheet" />
+    <link href="~/Publics/css/main.css?v=4" rel="stylesheet" />
 
     <script src="~/Publics/js/jquery-3.6.0.min.js"></script>
     <script src="~/Publics/js/javascript.js"></script>
@@ -34,7 +34,7 @@
                 <a href="https://www.facebook.com/vhuunghia" class="only"><i class="fab fa-facebook"></i></a>
                 <a href="#" class="only"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/vhuunghiax/" class="only"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="only"><i class="fas fa-search"></i></a>
+                <a href="@Url.Action("Search","Search")" class="only"><i class="fas fa-search"></i></a>
                 <a class="only" href="@Url.Action("Cart", "TrangChu")" style="position:relative">
                     <i class="fas fa-shopping-cart"></i>
                     @if (Session["Quantity"] != null)
@@ -307,7 +307,7 @@
             </div>
         </div>
         <div class="container-8-bottom">
-            <p style=" text-align: center;">Copyright © 2021 Võ Hữu Nghĩa - nghiax'K</p>
+            <p style=" text-align: center;">Copyright © 2023 by NHA</p>
         </div>
 
     </footer>

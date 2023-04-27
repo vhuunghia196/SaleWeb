@@ -19,15 +19,15 @@ namespace NiVi_Shop.Controllers
                 {
                     // xử lí lấy tất cả sản phẩm theo UserID
                     var orderID = db.Orders
-                                    .Where(o => o.UserID == userId.Value)
-                                    .Select(o => o.OrderID)
-                                    .ToList();
+                                .Where(o => o.UserID == userId.Value && o.isPaid == 1)
+                                .Select(o => o.OrderID)
+                                .ToList();
                     // list chi tiết order theo userid
-                    var orderDetails = db.OrderDetail
+                    var orderDetails = db.OrderDetails
                                     .Where(od => orderID.Contains(od.OrderID))
                                     .ToList();
                     // list sản phẩm theo orderid
-                    var productIds = db.OrderDetail
+                    var productIds = db.OrderDetails
                                     .Where(od => orderID.Contains(od.OrderID))
                                     .Select(od => od.ProductID)
                                     .ToList();

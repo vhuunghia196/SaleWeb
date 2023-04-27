@@ -1,4 +1,4 @@
-﻿@model List<NiVi_Shop.Models.Products>
+﻿@model List<NiVi_Shop.Models.Product>
 
 
 @{
@@ -146,12 +146,19 @@
                         </ul>
                     </div>
                     <div class="col-12">
-                        @if (@Session["userID"]!= null)
+                        @if (@Session["userID"] != null)
                         {
                             <a href="@Url.Action("PaymentWithPaypal", "TrangChu")">
                                 <div class="btn btn-primary mb-3">
                                     <i class="fab fa-cc-paypal" style="font-size: 46px; color: white"></i>
                                     <span class="ps-3">Pay with PAYPAL $@ViewBag.TotalPrice</span>
+                                    <span class="fas fa-arrow-right"></span>
+                                </div>
+                            </a>
+                            <a href="@Url.Action("OrderNotPay", "TrangChu")">
+                                <div class="btn btn-primary mb-3">
+                                    <i class="fab fa-cc-paypal" style="font-size: 46px; color: white"></i>
+                                    <span class="ps-3">ORDER $@ViewBag.TotalPrice</span>
                                     <span class="fas fa-arrow-right"></span>
                                 </div>
                             </a>

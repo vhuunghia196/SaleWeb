@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Success";
+    ViewBag.Title = "SuccessWithNotPay";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 @section head {
@@ -13,5 +13,13 @@
     <link href="~/Publics/css/all.min.css?v=2" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-siJTwz0+0fqvBlYrEfgjmX9x0gJDM28a0HfADyh2+TQq6bsNCl6UOkfM10/0/b+ZZD6wUsKjTYsNzJVKXBRXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 }
-<h2 style=" margin-top: 144px;">PAID SUCCESS, PLEASE CHECK YOUR PRODUCTS ORDERD</h2>
+@if (@ViewBag.NotSuccess != null)
+{
+    <h2 style=" margin-top: 144px;">@ViewBag.NotSuccess</h2>
+}
+else
+{
+    <h2 style=" margin-top: 144px;">ORDERD SUCCESS</h2>
+}
+
 

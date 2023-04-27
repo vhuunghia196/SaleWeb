@@ -21,8 +21,8 @@ namespace NiVi_Shop.Models
 
         public DateTime? DayComment { get; set; }
 
-        public virtual Products Products { get; set; }
+        public virtual Product Product { get; set; }
 
-        public virtual Users Users { get; set; }
+        public virtual User User { get; set; }
     }
 }

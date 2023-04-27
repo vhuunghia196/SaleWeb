@@ -3,6 +3,7 @@
     "",
     "\\NiVi_Shop",
     "\\NiVi_Shop\\App_Start",
+    "\\NiVi_Shop\\Controllers",
     "\\NiVi_Shop\\Views",
     "\\NiVi_Shop\\Views\\TrangChu"
   ],

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    document.querySelector(".card").style.display = "block";
     $(".go-to-top").hide()
     $(window).scroll(function(){
         /*if($(this).scrollTop()){

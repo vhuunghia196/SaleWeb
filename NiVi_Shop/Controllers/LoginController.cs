@@ -53,29 +53,27 @@ namespace NiVi_Shop.Controllers
 
         // hàm login băm mật khẩu
         [HttpPost]
-        public ActionResult Login(Users user)
+        public ActionResult Login(User user)
         {
             if (user != null)
             {
                 // Kiểm tra tên đăng nhập và mật khẩu có đúng không
                 var db = new DBContextNiViShop();
                 var userList = db.Users.ToList();
-                string trimmedUsername = user.Username.Trim();
-                string hashedPassword = "";
-                foreach (var i in userList)
+                var userExists = userList.Any(u => u.Username == user.Username.Trim());
+                if (!userExists)
                 {
-                    if (trimmedUsername == i.Username)
-                    {
-                        hashedPassword = i.Password;
-                        break;
-                    }
+                    ModelState.AddModelError("", "Tên đăng nhập không tồn tại");
+                    return View(user);
                 }
+
+                string hashedPassword = userList.First(u => u.Username == user.Username.Trim()).Password;
                 try
                 {
                     if (BCrypt.Net.BCrypt.Verify(user.Password.Trim(), hashedPassword))
                     {
-                        FormsAuthentication.SetAuthCookie(trimmedUsername, true);
-                        var currentUser = db.Users.FirstOrDefault(u => u.Username == trimmedUsername);
+                        FormsAuthentication.SetAuthCookie(user.Username.Trim(), true);
+                        var currentUser = db.Users.FirstOrDefault(u => u.Username == user.Username.Trim());
                         if (currentUser != null)
                         {
                             Session["Name"] = currentUser.Name;

@@ -16,12 +16,26 @@ header {
     background-color: white;
     z-index: 1;
 }
-
-    header.sticky .nav {
-        height: 90px;
-        line-height: 90px;
-        margin: 0;
-    }
+.button-search {
+    width: 6%;
+    line-height: normal !important;
+    border: none !important;
+    cursor: pointer;
+    font-size: 37px;
+}
+.search-product {
+    margin: 15px;
+    line-height: normal !important;
+    font-size: 30px;
+    width: 90%;
+    border: 1px black solid !important;
+    outline: none !important;
+}
+header.sticky .nav {
+    height: 90px;
+    line-height: 90px;
+    margin: 0;
+}
 
 .nav {
     display: flex;

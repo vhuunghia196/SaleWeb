@@ -22,7 +22,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         public class CombinedModelView
         {
             public ShowModelView ShowModelView { get; set; }
-            public Products Products { get; set; }
+            public Product Products { get; set; }
         }
 
         public ActionResult Add()
@@ -36,7 +36,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
                 Supplier = suppliers,
                 Categories = categories
             };
-            var viewModel2 = new Products();
+            var viewModel2 = new Product();
             var combinedModelView = new CombinedModelView
             {
                 ShowModelView = viewModel1,
@@ -99,7 +99,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Products p)
+        public ActionResult Edit(Product p)
         {
     
             try

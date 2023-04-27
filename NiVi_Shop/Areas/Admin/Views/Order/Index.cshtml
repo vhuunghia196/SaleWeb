@@ -50,14 +50,14 @@
                                         {
                                             <tr id="@item.OrderID">
                                                 <td>@item.OrderID</td>
-                                                <td>@item.Users.Name</td>
+                                                <td>@item.User.Name</td>
                                                 <td>
                                                     <ul>
                                                         @foreach (var orderDetail in ViewBag.Orderdetail.Items)
                                                         {
                                                             if (orderDetail.OrderID == @item.OrderID)
                                                             {
-                                                                <li>@orderDetail.Products.Name</li>
+                                                                <li>@orderDetail.Product.Name</li>
                                                             }
                                                         }
                                                     </ul>

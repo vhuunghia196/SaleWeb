@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "NotFound";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<div class="container-6 wow">
+    <div class="container-6-top">
+        <div style="width: 100%; max-width: 350px;margin-left: auto; margin-right:auto; text-align: center;" class="container-6-top-inner">
+            <h2>Great deals for great prices</h2>
+        </div>
+    </div>
+    <div class="container-6-bottom">
+        @using (Html.BeginForm("Search", "Search", FormMethod.Post))
+        {
+            <input type="text" name="searchKeyword" class="search-product" />
+            <button type="submit" class="button-search"><i class="fas fa-search" style=" font-size: 40px;"></i></button>
+        }
+        <h2>NotFound</h2>
+    </div>
+</div>
+

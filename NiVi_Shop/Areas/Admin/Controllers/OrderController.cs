@@ -14,7 +14,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var item = dbConnext.Orders.ToList();
-            ViewBag.Orderdetail = new SelectList(dbConnext.OrderDetail.ToList(), "OrderID", "ProductID");
+            ViewBag.Orderdetail = new SelectList(dbConnext.OrderDetails.ToList(), "OrderID", "ProductID");
             return View(item);
         }
 
