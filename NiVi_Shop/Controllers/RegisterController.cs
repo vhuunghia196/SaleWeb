@@ -46,7 +46,7 @@ namespace NiVi_Shop.Controllers
                     if (ModelState.IsValid)
                     {
                         
-                        var user2 = new User
+                        var user2 = new Users
                         {
                             Username = user.Username.Trim(),
                             Password = BCrypt.Net.BCrypt.HashPassword(user.Password.Trim()),

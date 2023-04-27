@@ -52,12 +52,11 @@
                                         {
                                             <tr id="@item.IDComment">
                                                 <td>@item.IDComment</td>
-                                                <td class="product-comment">@item.Product.Name</td>
-                                                <td class="user-comment">@item.User.Name</td>
+                                                <td class="product-comment">@item.Products.Name</td>
+                                                <td class="user-comment">@item.Users.Name</td>
                                                 <td class="day-comment">@item.DayComment</td>
                                                 <td>
-                                                    <button class="btn btn-danger remove-supplier">Remove</button>
-                                                    <button class="btn btn-primary update-supplier">Update</button>
+                                                    <button class="btn btn-danger remove-comment">Remove</button>
                                                 </td>
                                             </tr>
                                         }
@@ -89,14 +88,26 @@
 @section scripts {
     <script>
         $(document).ready(function () {
-            $.ajax({
-            url: '@Url.Action("getStatistics", "Statistics")',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                drawChartProductQuantity(data);
-            }
-        });
+            $('body').on('click', '.remove-comment', function () {
+                var tr = $(this).closest('tr');
+                var id = tr.attr('id');
+                var conf = confirm('Remove this comment ???');
+                if (conf === true) {
+                    $.ajax({
+                        url: '@Url.Action("Remove", "Comment")',
+                        type: 'POST',
+                        data: { id : id },
+                        success: function (data) {
+                            if (data.success) {
+                                tr.remove();
+                                alert("Remove Success")
+                            } else {
+                                alert("Remove Fail")
+                            }
+                        }
+                    });
+                }
+            })
         })
 
     </script>

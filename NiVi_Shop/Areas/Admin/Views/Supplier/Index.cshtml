@@ -221,6 +221,7 @@
                         success: function (rs) {
                             if (rs.success) {
                                 tr.remove();
+                                alert("Remove success!!")
                             } else {
                                 alert("Remove fail!!")
                             }
@@ -248,24 +249,27 @@
                 var Phone = $("#Phone-update").val();
                 var Address = $("#Address-update").val();
                 var Company = $("#Company-update").val();
-                $.ajax({
-                    url: "/admin/supplier/edit",
-                    type: 'POST',
-                    data: {
-                        id: id,
-                        name: Name,
-                        phone: Phone,
-                        address: Address,
-                        company: Company
-                    },
-                    success: function (rs) {
-                        if (rs.success) {
-                            alert("Success!!")
-                        } else {
-                            alert("Fail!!")
+                var conf = confirm('Update now ???');
+                if (conf === true) {
+                    $.ajax({
+                        url: "/admin/supplier/edit",
+                        type: 'POST',
+                        data: {
+                            id: id,
+                            name: Name,
+                            phone: Phone,
+                            address: Address,
+                            company: Company
+                        },
+                        success: function (rs) {
+                            if (rs.success) {
+                                alert("Success!!")
+                            } else {
+                                alert("Fail!!")
+                            }
                         }
-                    }
-                })
+                    })
+                }
             })
         })
     </script>

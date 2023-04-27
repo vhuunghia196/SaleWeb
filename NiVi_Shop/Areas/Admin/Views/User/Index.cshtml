@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NiVi_Shop.Models.User>
+﻿@model IEnumerable<NiVi_Shop.Models.Users>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -111,11 +111,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Password <span style="color:red">(*)</span></label>
-                                        <input type="text" class="form-control" id="Password" placeholder="Password">
+                                        <input type="password" class="form-control" id="Password" placeholder="Password">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Confirm Password <span style="color:red">(*)</span></label>
-                                        <input type="text" class="form-control" id="ConfirmPassword" placeholder="Confirm Password">
+                                        <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Name <span style="color:red">(*)</span></label>
@@ -207,6 +207,7 @@
                         success: function (rs) {
                             if (rs.success) {
                                 tr.remove();
+                                alert("Remove success")
                             } else {
                                 alert("Remove fail!!")
                             }
@@ -226,22 +227,25 @@
                 var id = tr.attr("id");
                 var role = $(this).closest("tr").find('.UserRole').val();
                 if (role != null) {
-                    $.ajax({
-                        url: "/admin/user/edit",
-                        type: 'POST',
-                        data: {
-                            id: id,
-                            role: role
-                        },
-                        success: function (rs) {
-                            if (rs.success == 1) {
-                                location.reload();
-                                alert("Success!!")
-                            } else {
-                                alert("Fail!!")
+                    var conf = confirm('Update now ???');
+                    if (conf === true) {
+                        $.ajax({
+                            url: "/admin/user/edit",
+                            type: 'POST',
+                            data: {
+                                id: id,
+                                role: role
+                            },
+                            success: function (rs) {
+                                if (rs.success == 1) {
+                                    location.reload();
+                                    alert("Success!!")
+                                } else {
+                                    alert("Fail!!")
+                                }
                             }
-                        }
-                    })
+                        })
+                    }
                 }
                 else {
                     alert("Role is not change")

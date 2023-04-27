@@ -16,5 +16,17 @@ namespace NiVi_Shop.Areas.Admin.Controllers
             var comment = dbConnext.Comment.ToList();
             return View(comment);
         }
+        [HttpPost]
+        public ActionResult Remove(int id)
+        {
+            var cmt = dbConnext.Comment.Find(id);
+            if (cmt != null)
+            {
+                dbConnext.Comment.Remove(cmt);
+                dbConnext.SaveChanges();
+                return Json(new { success = true });
+            }    
+            return Json(new { success = false });
+        }
     }
 }

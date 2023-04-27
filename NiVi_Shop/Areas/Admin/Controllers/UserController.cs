@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BCrypt.Net;
 
 namespace NiVi_Shop.Areas.Admin.Controllers
 {
@@ -52,6 +53,7 @@ namespace NiVi_Shop.Areas.Admin.Controllers
                     u.Name = name;
                     u.Username = username;
                     u.Password = password;
+                    u.Password = BCrypt.Net.BCrypt.HashPassword(u.Password.Trim());
                     u.PhoneNumber = phone;
                     u.Address = address;
                     u.Email = email;
