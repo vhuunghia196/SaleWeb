@@ -53,7 +53,7 @@ namespace NiVi_Shop.Controllers
 
         // hàm login băm mật khẩu
         [HttpPost]
-        public ActionResult Login(User user)
+        public ActionResult Login(Users user)
         {
             if (user != null)
             {

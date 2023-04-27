@@ -7,28 +7,25 @@ using System.Web.Mvc;
 
 namespace NiVi_Shop.Areas.Admin.Controllers
 {
-    public class OrderController : Controller
+    public class CommentController : Controller
     {
         DBContextNiViShop dbConnext = new DBContextNiViShop();
-        // GET: Admin/Order
+        // GET: Admin/Comment
         public ActionResult Index()
         {
-            var item = dbConnext.Orders.ToList();
-            ViewBag.Orderdetail = new SelectList(dbConnext.OrderDetail.ToList(), "OrderID", "ProductID");
-            return View(item);
+            var comment = dbConnext.Comment.ToList();
+            return View(comment);
         }
-
         [HttpPost]
-        public ActionResult Update (int id)
+        public ActionResult Remove(int id)
         {
-            var ord = dbConnext.Orders.Find(id);
-            if (ord != null)
+            var cmt = dbConnext.Comment.Find(id);
+            if (cmt != null)
             {
-                ord.isPaid = 1;
-                ord.isReceived = 1;
+                dbConnext.Comment.Remove(cmt);
                 dbConnext.SaveChanges();
                 return Json(new { success = true });
-            }
+            }    
             return Json(new { success = false });
         }
     }

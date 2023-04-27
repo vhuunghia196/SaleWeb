@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NiVi_Shop.Models.Orders>
+﻿@model IEnumerable<NiVi_Shop.Models.Comment>
 @{
     ViewBag.Title = "Đơn đặt";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -22,6 +22,8 @@
     <div class="card-header p-2">
         <ul class="nav nav-pills">
             <li class="nav-item"><a class="nav-link active" href="#Decor" id="view-tab" data-toggle="tab">View</a></li>
+            @*<li class="nav-item"><a class="nav-link" href="#Chair" id="add-tab" data-toggle="tab">ADD</a></li>
+                <li class="nav-item"><a class="nav-link" href="#Update" id="update-tab" data-toggle="tab" style="pointer-events:none">UPDATE</a></li>*@
         </ul>
     </div><!-- /.card-header -->
     <div class="card-body">
@@ -37,10 +39,10 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>User</th>
+                                        <th>Content</th>
                                         <th>Product</th>
-                                        <th width="20%">Pay</th>
-                                        <th>Receive</th>
+                                        <th>User</th>
+                                        <th>Day</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,38 +50,13 @@
                                     {
                                         foreach (var item in Model)
                                         {
-                                            <tr id="@item.OrderID">
-                                                <td>@item.OrderID</td>
-                                                <td>@item.Users.Name</td>
+                                            <tr id="@item.IDComment">
+                                                <td>@item.IDComment</td>
+                                                <td class="product-comment">@item.Products.Name</td>
+                                                <td class="user-comment">@item.Users.Name</td>
+                                                <td class="day-comment">@item.DayComment</td>
                                                 <td>
-                                                    <ul>
-                                                        @foreach (var orderDetail in ViewBag.Orderdetail.Items)
-                                                        {
-                                                            if (orderDetail.OrderID == @item.OrderID)
-                                                            {
-                                                                <li>@orderDetail.Products.Name</li>
-                                                            }
-                                                        }
-                                                    </ul>
-                                                </td>
-                                                @if (item.isPaid == 1)
-                                                {
-                                                    <td class="order-ispaid">true</td>
-                                                }
-                                                else
-                                                {
-                                                    <td class="order-ispaid">false</td>
-                                                }
-                                                @if (item.isReceived == 1)
-                                                {
-                                                    <td class="order-isreceive">true</td>
-                                                }
-                                                else
-                                                {
-                                                    <td class="order-isreceive">false</td>
-                                                }
-                                                <td>
-                                                    <button class="btn btn-primary update-order">Received</button>
+                                                    <button class="btn btn-danger remove-comment">Remove</button>
                                                 </td>
                                             </tr>
                                         }
@@ -87,7 +64,7 @@
                                     else
                                     {
                                         <tr>
-                                            <td colspan="8">No supplier</td>
+                                            <td colspan="8">No Comment</td>
                                         </tr>
                                     }
                                 </tbody>
@@ -111,32 +88,26 @@
 @section scripts {
     <script>
         $(document).ready(function () {
-            $('body').on('click', '.update-order', function () {
+            $('body').on('click', '.remove-comment', function () {
                 var tr = $(this).closest('tr');
                 var id = tr.attr('id');
-                var isreceive = $(this).closest('tr').find('.order-isreceive').text();
-                if (isreceive == 'true') {
-                    alert("Order had received!!!")
-                } else {
+                var conf = confirm('Remove this comment ???');
+                if (conf === true) {
                     $.ajax({
-                        url: '@Url.Action("Update", "Order")',
+                        url: '@Url.Action("Remove", "Comment")',
                         type: 'POST',
-                        data: {
-                            id: id,
-                        },
+                        data: { id : id },
                         success: function (data) {
                             if (data.success) {
-                                location.reload();
-                                alert("Update success")
+                                tr.remove();
+                                alert("Remove Success")
                             } else {
-                                alert("Update fail")
+                                alert("Remove Fail")
                             }
                         }
                     });
                 }
-
             })
-
         })
 
     </script>

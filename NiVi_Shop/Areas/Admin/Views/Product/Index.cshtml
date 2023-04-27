@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NiVi_Shop.Models.Product>
+﻿@model IEnumerable<NiVi_Shop.Models.Products>
 @{
     ViewBag.Title = "Sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -14,7 +14,7 @@
             <a href="/admin/home" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Product</a>
+            <a href="#" class="nav-link">Products</a>
         </li>
     </ul>
 }
@@ -63,7 +63,7 @@
                                     {
                                         foreach (var item in Model)
                                         {
-                                            if (@item.Category.CategoryName == "Decor")
+                                            if (@item.Categories.CategoryName == "Decor")
                                             {
                                                 <tr id="@item.ProductID">
                                                     <td>@item.ProductID</td>
@@ -73,7 +73,7 @@
                                                     <td>@item.Quantity</td>
                                                     <td>@item.Detail</td>
                                                     <td>@item.Supplier.Name</td>
-                                                    <td>@item.Category.CategoryName</td>
+                                                    <td>@item.Categories.CategoryName</td>
                                                     <td><button class="btn btn-danger remove-product">Remove</button></td>
                                                     <td><a href="/admin/product/edit/@item.ProductID" class="btn btn-primary update-product">Update</a></td>
                                                 </tr>
@@ -126,9 +126,9 @@
                                     {
                                         foreach (var item in Model)
                                         {
-                                            if (@item.Category.CategoryName == "Chair")
+                                            if (@item.Categories.CategoryName == "Chair")
                                             {
-                                                <tr id="trow_@item.ProductID">
+                                                <tr id="@item.ProductID">
                                                     <td>@item.ProductID</td>
                                                     <td>@item.Name</td>
                                                     <td><img src="@item.Image" width="100px" alt="IMAGE" /></td>
@@ -136,7 +136,7 @@
                                                     <td>@item.Quantity</td>
                                                     <td>@item.Detail</td>
                                                     <td>@item.Supplier.Name</td>
-                                                    <td>@item.Category.CategoryName</td>
+                                                    <td>@item.Categories.CategoryName</td>
                                                     <td><button class="btn btn-danger remove-product">Remove</button></td>
                                                     <td><a href="/admin/product/edit/@item.ProductID" class="btn btn-primary update-product">Update</a></td>
                                                 </tr>
@@ -189,9 +189,9 @@
                                     {
                                         foreach (var item in Model)
                                         {
-                                            if (@item.Category.CategoryName == "Light")
+                                            if (@item.Categories.CategoryName == "Light")
                                             {
-                                                <tr id="trow_@item.ProductID">
+                                                <tr id="@item.ProductID">
                                                     <td>@item.ProductID</td>
                                                     <td>@item.Name</td>
                                                     <td><img src="@item.Image" width="100px" alt="IMAGE" /></td>
@@ -199,7 +199,7 @@
                                                     <td>@item.Quantity</td>
                                                     <td>@item.Detail</td>
                                                     <td>@item.Supplier.Name</td>
-                                                    <td>@item.Category.CategoryName</td>
+                                                    <td>@item.Categories.CategoryName</td>
                                                     <td><button class="btn btn-danger remove-product">Remove</button></td>
                                                     <td><a href="/admin/product/edit/@item.ProductID" class="btn btn-primary update-product">Update</a></td>
                                                 </tr>
@@ -251,9 +251,9 @@
                                     {
                                         foreach (var item in Model)
                                         {
-                                            if (@item.Category.CategoryName == "Plant")
+                                            if (@item.Categories.CategoryName == "Plant")
                                             {
-                                                <tr id="trow_@item.ProductID">
+                                                <tr id="@item.ProductID">
                                                     <td>@item.ProductID</td>
                                                     <td>@item.Name</td>
                                                     <td><img src="@item.Image" width="100px" alt="IMAGE" /></td>
@@ -261,7 +261,7 @@
                                                     <td>@item.Quantity</td>
                                                     <td>@item.Detail</td>
                                                     <td>@item.Supplier.Name</td>
-                                                    <td>@item.Category.CategoryName</td>
+                                                    <td>@item.Categories.CategoryName</td>
                                                     <td><button class="btn btn-danger remove-product">Remove</button></td>
                                                     <td><a href="/admin/product/edit/@item.ProductID" class="btn btn-primary update-product">Update</a></td>
                                                 </tr>
@@ -300,9 +300,8 @@
             $('body').on('click', '.remove-product', function () {
                 var tr = $(this).closest('tr');
                 var id = tr.attr('id');
-                var conf = confirm('Bạn chắc chắn xóa sản phẩm này không');
+                var conf = confirm('Remove this product ???');
                 if (conf === true) {
-                    // Gọi API xóa sản phẩm với id tương ứng
                     $.ajax({
                         url: '/admin/product/remove',
                         type: 'POST',
